@@ -1,0 +1,62 @@
+<li ngbDropdown #myDrop="ngbDropdown" (openChange)="onNgbDropdownToggle($event)" class="nav-item dropdown-notification mr-3">
+  <a class="nav-link" ngbDropdownToggle id="navbarNotificationDropdown">
+    <i class="fas fa-bell"></i> 
+    <span *ngIf="unreadNotifsCount > 0" class="badge badge-pill badge-danger badge-up">{{ unreadNotifsCount }}</span>
+  </a>
+  <ul ngbDropdownMenu aria-labelledby="navbarNotificationDropdown" class="dropdown-menu dropdown-menu-media dropdown-menu-right">
+    <li class="dropdown-menu-header">
+      <div class="dropdown-header d-flex">
+        <h4 class="notification-title mb-0 mr-auto">Notifications</h4>
+        <div class="badge badge-pill badge-light-primary">{{ unreadNotifsCount }} Nouvelle(s) notification(s)</div>
+      </div>
+    </li>
+    <li class="scrollable-container media-list">
+      <ng-container *ngIf="showAll; else limitedNotifications">
+        <ng-container  *ngIf="notifications.length > 0; else noNotifications">
+          <a class="d-flex notification-item" href="javascript:void(0)" [ngStyle]="{'background-color': !notification.seen ? '#f2f8ff' : 'white'}" *ngFor="let notification of notifications">
+            <div class="media d-flex align-items-start">
+              <div class="media-left">
+                <div class="avatar">
+                  <img class="rounded-circle"  [src]="notification.sender?.avatar ? imgPrefix + notification.sender?.avatar : 'assets/avatar.jpg'" alt="avatar" height="35" width="35" />
+                </div>
+              </div>
+              <div class="media-body">
+                <p class="media-heading notification-text">
+                  <b>{{ notification.sender?.name }}</b>
+                  {{ notification.message }}
+                </p>
+                <small class="notification-text">{{ notification.creation_date | date: 'dd/MM/yyyy à HH:mm' }}</small>
+              </div>
+            </div>
+          </a>
+        </ng-container>
+        <ng-template #noNotifications>
+          <div class="text-center">Aucune notification</div>
+        </ng-template>
+      </ng-container>
+      <ng-template #limitedNotifications>
+        <a class="d-flex notification-item" href="javascript:void(0)" [ngStyle]="{'background-color': !notification.seen ? '#f2f8ff' : 'white'}" *ngFor="let notification of lastFiveNotifications">
+          <div class="media d-flex align-items-start">
+            <div class="media-left">
+              <div class="avatar">
+                <img class="rounded-circle"  [src]="notification.sender?.avatar ? imgPrefix + notification.sender?.avatar : 'assets/avatar.jpg'" alt="avatar" height="35" width="35" />
+              </div>
+            </div>
+            <div class="media-body">
+              <p class="media-heading notification-text">
+                <b>{{ notification.sender?.name }}</b>
+                {{ notification.message }}
+              </p>
+              <small class="notification-text">{{ notification.creation_date | date: 'dd/MM/yyyy à HH:mm' }}</small>
+            </div>
+          </div>
+        </a>
+      </ng-template>
+    </li>
+    <li class="dropdown-menu-footer">
+      <a class="btn btn-primary btn-block" (click)="toggleNotification()" href="javascript:void(0)">
+        {{ showAll ? 'Réduire' : 'Voir toutes les notifications' }}
+      </a>
+    </li>
+  </ul>
+</li>

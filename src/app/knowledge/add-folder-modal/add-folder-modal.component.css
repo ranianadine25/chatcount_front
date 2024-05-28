@@ -1,0 +1,96 @@
+.btn-outline-primary {
+  border-radius: 15px;
+  color: 030640;
+  border: 2px solid #030640;
+  margin-top: 10px ;
+  margin-left: 10px;
+  margin-right: 20px;
+}
+
+.btn-primary{
+  background: linear-gradient(to right, #9ccdf8, #030640);
+  border-radius: 15px;
+  color: 030640;
+  border: 2px solid #030640;
+  margin-top: 10px ;
+  margin-left: 10px;
+margin-bottom: 10px;
+}
+.rania{
+position: fixed;
+animation: fadeIn 0.5s;
+top: 0;
+left: 16.5625rem;
+width: 100%;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.5); /* Couleur de fond avec une opacité pour créer l'effet de flou */
+backdrop-filter: blur(10px); /* Flou du fond */
+z-index: 1000; /* Assure que la superposition est au-dessus de tout le contenu */
+display: flex; /* Afficher la superposition lorsque active */
+justify-content: center;
+align-items: center;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.my-custom{
+  margin-left:400px ;
+  display: flex;
+  justify-content: center;
+  width: 600px;
+  height: auto;
+  background-color: aliceblue;
+  border-radius:15px;
+  box-shadow:  0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+.close-button {
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+ margin-left: 1200px;
+  width: 10px;
+  height: 10px;
+  background-color: transparent;
+  z-index: 1001; 
+}
+h3 {
+  color: #333; /* Couleur du texte */
+  font-size: 24px; /* Taille de la police */
+  font-family: Arial, sans-serif; /* Police de caractères */
+  font-weight: bold; /* Gras */
+  margin-bottom: 10px; /* Marge en bas */
+}
+
+.overlay {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.5); /* Couleur de fond avec une opacité pour créer l'effet de flou */
+backdrop-filter: blur(10px); /* Flou du fond */
+z-index: 1000; /* Assure que la superposition est au-dessus de tout le contenu */
+display: none; /* Initialement caché */
+}
+
+.margin-right {
+margin-left: 5px; 
+}
+
+
+
+.overlay.active {
+display: flex; /* Afficher la superposition lorsque active */
+justify-content: center;
+align-items: center;
+}
+
+.popup {
+background-color: white;
+border-radius: 15px;
+padding: 20px;
+width: 80%; /* Ajustez la taille de votre popup comme vous le souhaitez */
+max-width: 600px; /* Limitez la largeur si nécessaire */
+box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Ombre pour le popup */
+}

@@ -1,0 +1,11 @@
+<div class="invite-users">
+  <h3>Inviter des utilisateurs</h3>
+  <ul>
+    <li *ngFor="let user of users">
+      <label>
+        <input type="checkbox" [value]="user._id" (change)="toggleUserSelection(user._id)">
+        {{ user.name }}
+      </label>
+    </li>
+  </ul>
+</div>

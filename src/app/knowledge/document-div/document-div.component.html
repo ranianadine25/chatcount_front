@@ -1,0 +1,37 @@
+<div class="chat-div">
+    <button class="add-doc-button "
+    style="background-color: #00bda700; color: #f6f2e3; border-radius: 25px; border: 2px solid #f6f2e3; padding: 6px 25px;" (click)="addChat()">
+      <i class="fas fa-plus" ></i> Ajouter Dossier
+    </button>
+  
+  
+    <div class="document-list" style="display: flex; flex-direction: column; align-items: center;">
+
+
+        <div class="document-list" style="display: flex; flex-direction: column; align-items: center;">
+            <div *ngIf="folders.length > 0; else noFoldersMessage">
+              <div *ngFor="let folder of folders" style="display: flex; align-items: center; margin-bottom: 20px;">
+                <div class="icon-div" style="margin-right: 20px; color: wheat;"><i class="fas fa-file-alt"></i></div>
+                <div style="margin-right: 15px;">
+                  <span class="info-div" style="color: wheat;font-size: 1.3rem;" (click)="loadConversationHistory(folder._id) ">{{ folder.name }}</span>
+                </div>
+                <div class="icon-div" style="color: wheat;"><i class="fas fa-ellipsis-v"  (click)="toggleDropdown(folder)"></i> 
+                  <div *ngIf="folder.showDropdown" class="dropdown-menu" style="border-top: none;">
+                    <ul>
+                    
+                      <li (click)="onDeleteFolder(folder._id)">
+                        <i class="fas fa-trash-alt" style="margin-right: 8px; color: #030640;"></i> Supprimer
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <ng-template #noFoldersMessage>
+              <div>Aucun dossier trouvé.</div>
+            </ng-template>
+          </div>
+          
+          
+    </div>
+</div>

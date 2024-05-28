@@ -1,0 +1,92 @@
+.add-doc-button {
+    margin-top: 10px; 
+    display: flex;
+    width: 3rem;
+    min-width: 3rem;
+    padding: 0.938rem 0.938rem 0 0.938rem;
+      width: 100%;
+    
+    }
+    
+    .add-doc-button:hover {
+      background-color: hsla(0, 0%, 80%, 0.707); /* Example hover effect */
+    }
+    
+    .add-doc-button i {
+      margin-right: 5px;
+    }
+
+   
+
+    .icon-div {
+       
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .info-div {
+      margin-left: 2px;
+      font-weight: normal;
+        width: 105px;
+        color: #1C1C1C;
+        font-family: Inter;
+        line-height: 24px;
+        word-wrap: break-word;
+    }
+
+    .doc-div, .bot-div {
+        color: #72777A;
+        font-size: 13px;
+        font-family: DM Sans;
+        font-weight: 400;
+        line-height: 24px;
+        word-wrap: break-word;
+    }
+    .document-list {
+      height: 280px; /* Hauteur de la zone d'affichage avec défilement */
+      overflow-y: auto;
+      margin-top: 20px; 
+   
+    
+      /* Styles de la barre de défilement */
+      scrollbar-width: thin; /* Largeur de la barre de défilement */
+      scrollbar-color:hsla(0, 0%, 95%, 0.158) hsla(240, 4%, 86%, 0); /* Couleur de la poignée et couleur de fond */
+    }
+    .font-circular-std-black-20 {
+      font-family: 'CircularStd-Black', sans-serif; /* Assurez-vous que la police est correctement chargée */
+      font-weight: 400; /* Poids de la police */
+      font-size: 15px; /* Taille de la police */
+      color: hsl(220, 2%, 76%);
+      
+    }
+    .dropdown-menu {
+      position: relative;
+      display: inline-block;
+      margin-left: 10px;
+      border-top: none;
+      background-color: rgba(255, 255, 255, 0);
+    
+    }
+    
+    .dropdown-menu ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      background-color: hsla(0, 0%, 80%, 0.822);
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      position: absolute;
+      top: 25px; /* Ajustez la position verticale selon vos besoins */
+      z-index: 1;
+    }
+    
+    .dropdown-menu ul li {
+    
+      padding: 12px 16px;
+      cursor: pointer;
+    }
+    
+    .dropdown-menu ul li:hover {
+      background-color: hsla(0, 0%, 80%, 0.707);
+    }
+    

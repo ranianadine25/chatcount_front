@@ -1,0 +1,153 @@
+<div class="document-page">
+  <img src="assets/mapping.jpg" alt="Logo" class="rounded-circle" height="150" width="150" style="margin-left: 35%; margin-bottom: 20px;">
+  <h1 class="title" style="margin-left: 30%;">Paramétrages  </h1>
+  <div class="add-fec-section" >
+    <h3>Mapper automatiquement via le mapping ChatCount</h3>
+    <div class="add-fec-options">
+      <div class="add-fec-option">
+        <button class="add-fec-button" [style.background-color]="fecSettingsButtonColor" (click)="toggleFECSettings()"> <i class="fa fa-tag"></i> Paramétrage du Traitement des FEC </button>
+      </div>
+      <div class="add-fec-option">
+        <button class="add-fec-button" [style.background-color]="keywordsButtonColor" (click)="toggleKeywords()"> <i class="fa fa-code"></i> Paramétrage des mots clés </button>
+      </div>
+      <div class="add-fec-option">
+        <button class="add-fec-button" [style.background-color]="patternsButtonColor" (click)="togglePatterns()"> <i class="fa fa-check"></i> Paramétrage des patterns </button>
+      </div>
+    </div>
+  </div>
+  <div class="fec-list-section">
+    <div class="table-container" *ngIf="showKeywords">
+
+      <div class="add-column">
+        <button  type="button" class="btn btn-outline-primary" style="background-color: bisque;" id="import-fec-button" (click)="openFileUploadDialog()">
+          <i class="fa fa-file-import"></i> Importer votre Fichier.csv
+        </button>
+        <button (click)="exportData()" style="background-color: rgb(72, 100, 181);margin-left: 5px;">Exporter CSV</button>
+        <div style="margin-top: 10px;">
+
+        <input  type="text" [(ngModel)]="newColumnName" placeholder="Nom de la colonne">
+        <button style="background-color: linear-gradient(to right, #9ccdf8, #030640);" (click)="addColumn()">Ajouter colonne</button>
+       </div>
+      </div>
+      
+      <table class="csv-table">
+        <thead>
+          <tr>
+            <th *ngFor="let column of csvData?.titre.split(';')">{{ column }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of csvData?.contenu; let i = index">
+            <td *ngFor="let cell of row.split(';'); let j = index">
+              <div *ngIf="!isEditing[i]?.[j]; else editMode" class="cell-content" >
+                <span style="margin-right: 10px;">{{ cell }} </span>
+
+                <span (click)="toggleEdit(i, j)" class="edit-icon"><i class="fas fa-edit"></i></span>
+                <div (click)="deleteCsvData(i, j)" class="delete-icon"><i class="fas fa-trash"></i></div>
+              </div>
+              <ng-template #editMode>
+                <input type="text" [(ngModel)]="csvData.contenu[i][j]" (blur)="updateCellValue(i, j, $event)" />
+              </ng-template>
+            </td>
+          </tr>
+          <tr>
+            <ng-container *ngFor="let column of csvData?.titre.split(';'); let j = index">
+              <td>
+                <input type="text" [(ngModel)]="newRow[j]" />
+              </td>
+            </ng-container>
+            <td>
+              <button (click)="insertRow()" class="add_button">Insérer</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      
+      
+      
+    </div>
+    <div class="table-container" *ngIf="showPatterns">
+      <div class="add-column">
+        <button  type="button" class="btn btn-outline-primary" style="background-color: bisque;" id="import-fec-button" (click)="openFileUploadDialog2()">
+          <i class="fa fa-file-import"></i> Importer votre Fichier.csv
+        </button>
+        <button (click)="exportData()" style="background-color: rgb(72, 100, 181);margin-left: 5px;" >Exporter CSV</button>
+
+       
+      </div>
+      <table class="csv-table">
+        <thead>
+          <tr>
+            <th *ngFor="let column of patternsData?.titre.split(';')">{{ column }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of patternsData?.contenu; let i = index">
+            <ng-container *ngFor="let cell of row.split(';'); let j = index">
+              <td>
+                <div *ngIf="!isEditing[i]?.[j]; else editMode" class="cell-content">
+                  <span style="margin-right: 5px;">{{ cell }}</span>
+                  <span (click)="toggleEdit(i, j)" class="edit-icon"><i class="fas fa-edit"></i></span>
+                  <div (click)="deletePatternData(i, j)" class="delete-icon">
+                    <i class="fas fa-trash"></i>
+                  </div>
+                </div>
+                <ng-template #editMode>
+                  <input type="text" [(ngModel)]="patternsData.contenu[i][j]" (blur)="updatePatternValue(i, j, $event)" />
+                </ng-template>
+              </td>
+            </ng-container>
+          </tr>
+          <tr>
+            <ng-container *ngFor="let column of patternsData?.titre.split(';'); let j = index">
+              <td>
+                <input type="text" [(ngModel)]="newRow[j]" />
+              </td>
+            </ng-container>
+            <td>
+              <button (click)="insertRowPaatern()" class="add_button">Insérer</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      
+      
+    </div>
+  <div  *ngIf="showFECSettings"> <div class="card-container" >
+    <div class="card-container">
+      <div class="labels-row">
+        <h2 *ngFor="let number of labelNumbers" (click)="toggleLabels(number)">Racine {{ number }}</h2>
+      </div>
+      <form (ngSubmit)="searchLabels()">
+        <input class="recherche" type="text" [(ngModel)]="searchRootId" name="searchRootId" placeholder="Racine">
+        <input class="recherche" type="text" [(ngModel)]="searchLabel" name="searchLabel" placeholder="Libellé">
+        <button style="background-color: rgb(72, 100, 181);margin-left: 5px;"  type="submit">Rechercher</button>
+      </form>
+      
+      <div class=" h-[73vh] flex-grow overflow-y-scroll">
+        <div *ngFor="let label of labels">
+          <div class="flex items-center justify-between">
+            <span>{{ label.rootId }} - </span>
+            <input style="width: 800px;" type="text" [(ngModel)]="label.label" (blur)="updateLabel(label._id, label.label,labelNumber)">
+            <button class="delete-button" (click)="onDeleteLabel(label._id)">
+              <i class="fa fa-trash-alt margin-right" style="cursor: pointer;"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <h2>Ajouter un nouveau libellé</h2>
+    <div>
+      <label for="newLabelRootId">Identifiant racine :</label>
+      <input type="text" id="newLabelRootId" [(ngModel)]="newLabelRootId">
+    </div>
+    <div>
+      <label for="newLabelName">Nom du libellé :</label>
+      <input type="text" id="newLabelName" [(ngModel)]="newLabelName">
+    </div>
+    <button (click)="addNewLabel(labelNumber)" style="background-color: linear-gradient(to right, #9ccdf8, #030640);"  class="btn btn-outline-primary">Ajouter</button>
+    
+
+  
+</div>
+ 

@@ -1,0 +1,44 @@
+.container {
+  width: 600px;
+  margin: 20px auto;
+}
+
+
+
+.card-title {
+  font-weight: bold;
+  margin-top: 10px;
+  width: 100;
+}
+
+.card-text {
+  margin-bottom: 10px;
+}
+
+.form-control {
+  width: 400px;
+  border-radius: 5px;
+}
+
+.list-group {
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+.list-group-item {
+  padding: 10px;
+  border-radius: 5px;
+  transition: 0.2s ease-in-out;
+}
+
+.list-group-item:hover {
+  background-color: #f0f0f0;
+}
+
+.btn-primary {
+  margin-top: 10px;
+  border-radius: 5px;
+  background-color: #010326;
+  color: #fff;
+  font-size: 12px;
+}

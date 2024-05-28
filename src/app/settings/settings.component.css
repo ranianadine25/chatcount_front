@@ -1,0 +1,280 @@
+
+.document-page {
+    max-width: 1000px; 
+    margin: 0 auto; 
+    padding: 20px;
+    overflow: hidden;
+    min-width: 150vh;
+    min-height: 100vh;
+    margin-left: 18%;
+    }
+    .btn-outline-primary {
+        background: linear-gradient(to right, #9ccdf8, #030640);;
+        border-radius: 15px;
+        background-color: #030640;
+        color: #f6f2e3;
+        border: 2px solid #030640;
+        margin: 2px;
+    }
+    h2 {
+        margin-bottom: 10px;
+      }
+      
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
+      
+      li {
+        margin-bottom: 5px;
+      }
+      
+      input[type="text"] {
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+    
+      .labels-list li {
+        margin-right: 20px; /* Espace entre chaque libellé */
+      }
+      .labels-row {
+        display: flex;
+      }
+      
+      .labels-row h2 {
+        margin-right: 20px; /* Pour ajouter un espace entre chaque titre */
+      }
+      .voir{
+        background-color: #bcc9fdb0;
+        font-style: italic;
+        font-size: 18px;
+        border-radius: 10px;
+        border: navy;
+        color: #2541b2; /* Couleur du texte du bouton */
+      }
+      
+.dropdown-menu {
+  position: relative;
+  display: inline-block;
+  margin-left: 80px;
+  border-top: none;
+  background-color: rgba(255, 255, 255, 0);
+
+}
+
+.dropdown-menu ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  background-color: hsla(0, 0%, 80%, 0.822);
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  position: absolute;
+  top: 25px; /* Ajustez la position verticale selon vos besoins */
+  right: 0; /* Ajustez la position horizontale selon vos besoins */
+  z-index: 1;
+}
+
+.dropdown-menu ul li {
+
+  padding: 12px 16px;
+  cursor: pointer;
+}
+
+.dropdown-menu ul li:hover {
+  background-color: hsla(0, 0%, 80%, 0.707);
+}
+.delete-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.delete-button:hover {
+  color: red; /* Changement de couleur au survol */
+}
+
+.delete-button:focus {
+  outline: none; /* Suppression de l'effet d'ombre au focus */
+}
+.recherche {
+  padding: 8px 12px; 
+  width: 100px;
+  border: 1px solid #ccc; /* Ajoute une bordure pour délimiter les champs de recherche */
+  border-radius: 4px; /* Arrondit les coins des champs de recherche */
+  margin-right: 8px; /* Ajoute un peu d'espace entre les champs de recherche */
+}
+
+button[type="submit"] {
+  padding: 8px 16px; /* Ajoute un peu d'espace intérieur au bouton */
+  background-color: #19487a; /* Couleur de fond du bouton */
+  color: #fff; /* Couleur du texte du bouton */
+  border: none; /* Supprime la bordure du bouton */
+  border-radius: 4px; /* Arrondit les coins du bouton */
+  cursor: pointer; /* Change le curseur en une main lorsqu'il passe sur le bouton */
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3; /* Couleur de fond du bouton au survol */
+}
+.add-fec-section, .fec-list-section {
+  width: 80%;
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+
+}
+
+.add-fec-section h3, .fec-list-section h3 {
+  margin-top: 0;
+}
+
+.add-fec-options {
+  display: flex;
+  justify-content: space-around; /* Pour aligner les boutons horizontalement */
+}
+
+.add-fec-option {
+  height: 100px;
+  margin-right: 10px;
+  border: 2px solid #2541b2; /* Couleur de la bordure */
+  border-radius: 10px; /* Forme carrée avec un bord arrondi */
+  background-color: transparent; /* Fond transparent */
+  padding: 10px; /* Espacement à l'intérieur de la carte */
+}
+.add-fec-button i {
+  margin-right: 20px; 
+}
+.add-fec-button {
+  background-color: #2541b200;
+  margin-right: 5px;
+  font-style: italic;
+  font-size: 20px;
+  color: #2541b2; /* Couleur du texte du bouton */
+  border: none; /* Supprime la bordure du bouton */
+  padding: 10px 20px; /* Espacement à l'intérieur du bouton */
+  border-radius: 5px; /* Bord arrondi du bouton */
+  cursor: pointer; /* Curseur pointer au survol */
+  outline: none; /* Supprime la bordure de focus */
+}
+
+.add-fec-button:hover {
+  background-color: #97a4d7;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: #f2f2f2;
+  padding: 8px;
+  text-align: left;
+}
+
+td {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #ddd;
+}
+
+.table-container {
+  overflow-x: auto; 
+  overflow-y: auto;
+  height: 600px; 
+
+}
+.delete-icon {
+  color: rgba(255, 0, 0, 0.633); 
+  font-size: 15px; 
+  margin-right: 2px; 
+}
+/* Style pour le tableau */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: #f2f2f2;
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+.cell-content {
+  display: flex;
+  align-items: center;
+}
+
+
+.edit-icon, .delete-icon {
+  margin-right: 5px; /* Adjust the margin as needed */
+  cursor: pointer;
+}
+
+.edit-icon i {
+  color: #007bff;
+}
+
+.delete-icon i {
+  color: #dc3545;
+
+}
+.add_button{
+  background-color: #2541b200;
+  font-style: italic;
+  font-size: 20px;
+  color: #2541b2; 
+  border: none; 
+  padding: 10px 20px; 
+  border-radius: 5px;
+  cursor: pointer; 
+  outline: none; 
+}
+.add-column {
+  margin-bottom: 20px;
+}
+
+.add-column input[type="text"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+  width: 200px;
+}
+
+.add-column button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-column button:hover {
+  background-color: #45a049;
+}
+
+.add-column button:active {
+  background-color: #3e8e41;
+}

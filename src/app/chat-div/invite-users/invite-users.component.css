@@ -1,0 +1,38 @@
+.invite-users {
+    position: fixed;
+    animation: fadeIn 0.5s;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.invite-users ul {
+    list-style: none;
+    padding: 0;
+}
+
+.invite-users li {
+    margin-bottom: 10px;
+}
+
+.invite-users button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.invite-users button:hover {
+    background-color: #0056b3;
+}

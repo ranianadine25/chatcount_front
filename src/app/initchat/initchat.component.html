@@ -1,0 +1,17 @@
+<div *ngIf="showContent"  class="container">
+   
+    <div *ngIf="showContent"  class="card-body">
+      <h5 class="card-title">Choisissez un bot pour une nouvelle conversation</h5>
+      <p class="card-text">Rechercher des bots...</p>
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Entrez le nom du bot">
+      </div>
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let bot of bots">
+          <a href="#">{{bot.name}} - {{bot.description}}</a>
+        </li>
+      </ul>
+      <button type="button" class="btn btn-primary"(click)="addChat()">Lancer votre discussion</button>
+    </div>
+</div>
+  

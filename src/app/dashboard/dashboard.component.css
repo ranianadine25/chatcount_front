@@ -1,0 +1,9 @@
+.document-page {
+    max-width: 1000px; 
+    margin: 0 auto; 
+    padding: 20px;
+    overflow: hidden;
+    min-width: 150vh;
+    min-height: 100vh;
+    margin-left: 18%;
+    }

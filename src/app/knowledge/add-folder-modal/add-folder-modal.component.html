@@ -1,0 +1,37 @@
+<div  class="rania  d-flex justify-content-between ">
+  <div class="my-custom " >
+    <div class="close-button" style="cursor: pointer;" (click)="closePopup()">
+      <img src="./assets/circle.svg" alt="Close button">
+    </div>
+    <div>
+  
+     
+    </div>
+    <div class="modal-body">
+      <div class="fec-selection">
+        <h3>Ajouter Un Dossier</h3>
+        <div class="form-group">
+          <label for="folderName">Nom du dossier :</label>
+          <input type="text" class="form-control" id="folderName" [(ngModel)]="folderName" name="folderName" required>
+        </div>
+      </div>
+     
+      <div class="discussion-button">
+        <button type="button" class="btn btn-primary"  (click)="createFolder()">Créer Dossier</button>
+      </div>
+      <div class="overlay" [class.active]="isPopupOpen2">
+        <div class="popup">
+          <i class="fa fa-check-circle confirmation-icon"></i>
+          <p class="confirmation-text">Vous avez créé votre dossier avec succès!</p>
+          <button class="btn btn-success confirm-button" (click)="confirmAction2()">Ok</button>  </div>
+      </div>
+      <div class="overlay" [class.active]="isPopupOpen">
+        <div class="popup">
+          <i class="fa fa-check-circle confirmation-icon"></i>
+          <p class="confirmation-text">le nom de dossier existe déja!!</p>
+          <button class="btn btn-success confirm-button" (click)="confirmAction2()">Réssayer</button>  </div>
+      </div>
+    </div>
+    </div>
+  </div>
+  

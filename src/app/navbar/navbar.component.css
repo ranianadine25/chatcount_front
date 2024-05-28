@@ -1,0 +1,56 @@
+.container {
+    max-width: 800px; /* ajustez la largeur selon vos besoins */
+    margin: 0 auto; /* centre le conteneur horizontalement */
+    padding: 20px;
+  }
+  .navbar {
+    width: 87% ;
+     padding: 20px;
+     height: 70px;
+     margin-left: 200px;
+   }
+   .navbar-nav {
+    display: flex !important; 
+    align-items: center;
+    justify-content: flex-end; 
+    list-style: none; 
+    padding: 0; 
+  }
+   .avatar{
+    margin-top: 20px;
+    width: 55px;
+    height: 55px;
+    margin-left: 7px;
+   }
+  
+  .navbar-nav .nav-item {
+    margin-left: 10px; 
+  }
+  .navbar-nav .nav-item:last-child {
+    margin-right: 0;
+  }
+  .dropdown-menu-right {
+    margin-top: 10px;
+    right: 0 !important;
+    left: auto !important;
+  }
+  
+  .touchspin-cart {
+    .touchspin-wrapper {
+      width: 6.4rem;
+    }
+    &:focus-within {
+      box-shadow: none !important;
+    }
+  }
+  
+  app-navbar-bookmark {
+    display: flex;
+  }
+  
+  .navbar-static-style-on-scroll {
+    background-color: #fff !important;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 4px 20px 0px !important;
+  }
+  
+ 

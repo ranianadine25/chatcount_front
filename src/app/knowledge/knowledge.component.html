@@ -1,0 +1,146 @@
+<div class="document-page">
+  <div class="message-list" *ngIf="folderId === ':id'">
+    <img src="assets/fichier.jpg" alt="Logo" class="rounded-circle" height="150" width="150" style="margin-left: 450px; margin-bottom: 20px;">
+    <h1 class="title" style="margin-left: 18%;">La base de connaissance de ChatCount</h1>
+    <div class="card-container">
+      <div class="card">
+        <h2 style="margin-top: 25px; margin-left: 10px;">Consultez les dossiers et les fichiers dans la base de connaissance :</h2>
+        <ul>
+          <li>Manipuler vos dossiers personnels et partagés </li>
+          <li>Mettre à jour vos fichiers Fecs</li>
+          <li>Lancer le traitement d'un fichier FEC</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="row" *ngIf="folderId !== ':id'">
+    <div class="col text-right">
+      <div *ngIf="folderName" class="fec-name" >{{ folderName }}<i class="fas fa-ellipsis-v" style="margin-left: 4px;"></i>
+      </div>
+    </div>
+  </div>
+  <!-- Section d'ajout de nouveaux FEC et liste des FEC -->
+  <div class="add-fec-section" *ngIf="folderId !== ':id'">
+    <h3>Ajouter un nouveau FEC</h3>
+    <div class="add-fec-options">
+      <!-- Option 1: Importer un fichier depuis votre ordinateur -->
+      <div class="add-fec-option">
+        <button class="add-fec-button" (click)="openFileUploadDialog()">  <i class="fa fa-file-import"></i>Importer depuis votre ordinateur</button>
+      </div>
+      <!-- Option 2: Connecter à votre logiciel comptable -->
+      <div class="add-fec-option">
+        <button class="add-fec-button" (click)="connectToFECSoftware()">  <i class="fa fa-file-import"></i>Connecter à votre logiciel comptable</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section pour afficher la liste des FEC déjà présents dans le dossier -->
+  <div class="fec-list-section" *ngIf="folderId !== ':id'">
+    <h3>Liste des FEC</h3>
+    <div class="form-group">
+      <label for="etatSelect">Filtrer par état :</label>
+      <select class="form-control" id="etatSelect" (change)="filterFecsByState($event)">
+        <option value="">Tous les fecs</option>
+        <option value="non traité">Non traités</option>
+        <option value="traité">Traités</option>
+        <!-- Ajoutez d'autres options pour les différents états -->
+      </select>
+    </div>
+    <!-- src/app/components/comptable/comptable.component.html -->
+<!-- src/app/components/comptable-list/comptable-list.component.html -->
+<div *ngIf="errorMessage">{{ errorMessage }}</div>
+<table *ngIf="entries.length">
+  <thead>
+    <tr>
+      <th>Journal ID</th>
+      <th>Journal Code</th>
+      <th>Journal Libellé</th>
+      <th>Date de la Pièce</th>
+      <th>Numéro de Compte</th>
+      <th>Libellé du Compte</th>
+      <th>Débit</th>
+      <th>Crédit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let entry of entries">
+      <td>{{ entry.journalId }}</td>
+      <td>{{ entry.journalCode }}</td>
+      <td>{{ entry.journalLibelle }}</td>
+      <td>{{ entry.datePiece }}</td>
+      <td>{{ entry.compteNumero }}</td>
+      <td>{{ entry.compteLibelle }}</td>
+      <td>{{ entry.debit.amount }}</td>
+      <td>{{ entry.credit.amount }}</td>
+    </tr>
+  </tbody>
+</table>
+
+    <div class="fec-list">
+      <!-- Afficher la liste des FEC ici -->
+ 
+      <div class="row">
+        <div class="col-12">
+          <div class="mb-2">
+            <p class="total-missions">Nombre total de fecs : {{ fecs.length }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="table-responsive">
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th width="15%">Nom</th>
+
+              <th>Date de creation</th>
+              <th>mis à jour</th>
+
+              <th>Etat</th>
+              <th>Actions</th>
+
+
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Verify the *ngFor loop to ensure data is being displayed -->
+            <ng-container *ngFor="let fec of fecs">
+              <tr>
+                <td class="font-weight-bold">{{ fec.name }}</td>
+               
+                <td class="font-weight-bold">{{ fec.createdAt | date: 'dd/MM/yyyy à HH:mm'  }}</td>
+                <td class="font-weight-bold">{{ fec.updatedAt | date: 'dd/MM/yyyy à HH:mm'  }}</td>
+                <td class="custom-badge" style="border-radius: 20px; text-align: center;"  [ngClass]="getColor(fec.etat)">{{ fec.etat }}</td>
+
+                <td class="pl-3 d-flex">
+                  <div ngbDropdown class="dropdown" >
+                    <button class="btn btn-outline-primary" id="dropdownBrowserState" ngbDropdownToggle>
+                      <i class="feather icon-more-vertical"></i>
+                    </button>
+                    <div ngbDropdownMenu class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownBrowserState">
+                      <button class="dropdown-item" (click)="lancerTraitementFEC(fec._id)">
+                        <i class="feather icon-edit"></i> Traiter
+                      </button>
+                      <button class="dropdown-item" (click)="deleteFec(fec._id)">
+                        <i class="feather icon-trash-2"></i> Supprimer
+                      </button>
+                    </div>
+                  </div>
+                  
+                </td>
+                
+        
+              </tr>
+            </ng-container>
+            <tr *ngIf="fecs?.length == 0">
+              <th colspan="7" style="text-align: center;"><i class="feather icon-alert-circle mr-1" ></i>
+                Aucune Mission Pour le moment</th>
+            </tr>
+          </tbody>
+        </table>
+
+</div>
+    </div>
+  </div>
+</div>

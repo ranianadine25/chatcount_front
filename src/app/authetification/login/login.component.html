@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<div class="container" id="container">
+  <div class="form-container sign-up" [ngClass]="{'active': !signInMode, 'hidden': signInMode}">
+    <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+      <h1>Create Account</h1>
+      <div>
+        <input type="text" placeholder="Name" formControlName="name" id="register-name">
+        <div *ngIf="registerForm?.get('name')?.invalid && (registerForm?.get('name')?.dirty || registerForm?.get('name')?.touched)" class="error-message">
+          <div *ngIf="registerForm?.get('name')?.errors?.['required']">Le nom est requis.</div>
+        </div>
+      </div>
+
+      <div>
+        <input type="email" placeholder="Email" formControlName="email" id="register-email">
+        <div *ngIf="registerForm?.get('email')?.invalid && (registerForm?.get('email')?.dirty || registerForm?.get('email')?.touched)" class="error-message">
+          <div *ngIf="registerForm?.get('email')?.errors?.['required']" class="error-message">L'email est requis.</div>
+          <div *ngIf="registerForm?.get('email')?.errors?.['email']" class="error-message">L'email doit être valide.</div>
+        </div>
+      </div>
+
+      <div>
+        <input type="password" placeholder="Password" formControlName="password" id="register-password">
+        <div *ngIf="registerForm?.get('password')?.invalid && (registerForm?.get('password')?.dirty || registerForm?.get('password')?.touched)" class="error-message">
+          <div *ngIf="registerForm?.get('password')?.errors?.['required']" class="error-message">Le mot de passe est requis.</div>
+          <div *ngIf="registerForm?.get('password')?.errors?.['minlength']" class="error-message">Le mot de passe doit contenir au moins 6 caractères.</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="avatar" class="control-label">
+          <i class="fa fa-upload"></i>
+          Image
+        </label>
+        <input type="file" class="form-control-file" id="avatar" name="avatar" (change)="onFileSelected($event)" accept="image/*">
+      </div>
+    
+      
+      <button type="submit">S'inscrire</button>
+      
+    </form>
+    <div class="overlay" [class.active]="isPopupOpen">
+      <div class="popup">
+        <i class="fa fa-check-circle confirmation-icon"></i>
+        <p class="confirmation-text">Un fichier avec le même nom existe déjà!. Voulez-vous le remplacer par le fichier suivant ?</p>
+        <button class="btn btn-success confirm-button" (click)="confirmAction()">Confirmer</button>  </div>
+    </div>
+  </div>
+
+  <div class="form-container sign-in" [ngClass]="{'active': signInMode, 'hidden': !signInMode}">
+    <form [formGroup]="loginForm" (ngSubmit)="onSignIn()">
+      <h1>Sign In</h1>
+
+      <div>
+        <input type="email" placeholder="Email" formControlName="email" id="login-email">
+        <div *ngIf="loginForm?.get('email')?.invalid && (loginForm?.get('email')?.dirty || loginForm?.get('email')?.touched)" class="error-message">
+          <div *ngIf="loginForm?.get('email')?.errors?.['required']" class="error-message">L'email est requis.</div>
+    <div *ngIf="loginForm?.get('email')?.errors?.['email']" class="error-message">L'email doit être valide.</div>
+  </div>
+      </div>
+
+      <div>
+        <input type="password" placeholder="Password" formControlName="password" id="login-password">
+        <div *ngIf="loginForm?.get('password')?.invalid && (loginForm?.get('password')?.dirty || loginForm?.get('password')?.touched)" class="error-message">
+          <div *ngIf="loginForm?.get('password')?.errors?.['email']" class="error-message">Le mot de passe est requis.</div>
+        </div>
+      </div>
+
+      <a href="#">Forget Your Password?</a>
+      <button type="submit">Sign In</button>
+    </form>
+  </div>
+
+  <div class="toggle-container">
+    <div class="toggle">
+      <div class="toggle-panel toggle-left">
+        <h1>Welcome Back!</h1>
+        <p>Enter your personal details to use all site features</p>
+        <button class="hidden" id="login" (click)="toggleSignInMode(true)">Sign In</button>
+      </div>
+      <div class="toggle-panel toggle-right">
+        <h1>ChatCount, Welcome!</h1>
+        <p>Register with your personal details to use all site features</p>
+        <button class="hidden" id="register" (click)="toggleSignInMode(false)">Sign Up</button>
+      </div>
+    </div>
+  </div>
+</div>

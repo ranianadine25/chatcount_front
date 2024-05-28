@@ -1,0 +1,68 @@
+body{
+  background: #f7f7ff;
+  margin-top:20px;
+}
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 0 solid transparent;
+  border-radius: .25rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 6px 0 rgb(218 218 253 / 65%), 0 2px 6px 0 rgb(206 206 238 / 54%);
+}
+.me-2 {
+  margin-right: .5rem!important;
+}
+.form-group {
+  margin-bottom: 15px;
+}
+
+input[type="file"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+.user-card {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+
+}
+
+.user-avatar img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.user-details {
+  flex-grow: 1;
+}
+
+.user-details p {
+  margin: 0;
+  line-height: 1.5;
+}

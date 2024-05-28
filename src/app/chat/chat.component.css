@@ -1,0 +1,308 @@
+.container {
+  max-width: 1000px; /* ajustez la largeur selon vos besoins */
+  margin: 0 auto; /* centre le conteneur horizontalement */
+  padding: 20px;
+  overflow: hidden;
+  min-width: 150vh;
+  min-height: 100vh;
+  position: fixed;
+  margin-left: 18%;
+
+}
+
+.message {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+.alternate-row {
+  background-color: #427d9f;
+}
+.custom-table {
+  color: #fbefef; /* Couleur du texte */
+  background-color: #ffffff; /* Couleur d'arrière-plan */
+  /* Ajoutez d'autres styles selon vos besoins */
+}
+
+.custom-table th {
+  /* Styles pour les en-têtes de tableau */
+}
+
+.custom-table td {
+  /* Styles pour les cellules de tableau */
+}
+
+.from {
+  background-color: rgb(224, 224, 224); 
+}
+
+.to {
+  background-color: #c8d9f0; 
+}
+.bord{
+  border-radius: 12px;
+  border-color: #ffffff;
+  background-color: #ffffff55;
+  ;
+}
+
+.input-group {
+  position: fixed;
+  margin-left: 120px;
+  bottom: 0;
+  left: 50%; /* Place la div au milieu horizontalement */
+  transform: translateX(-50%); /* Décale la div de 50% de sa propre largeur vers la gauche */
+  width: 80%; /* ajustez la largeur selon vos besoins */
+  background-color: #fff; /* Vous pouvez ajuster la couleur de fond selon vos besoins */
+  padding: 12px;
+  box-shadow: 0px -2px 5px 0px rgba(0,0,0,0.1); /* Ajoute une légère ombre sous la div */
+  z-index: 999; /* Assure que la div est au-dessus du contenu */
+}
+
+.input-suggestions {
+  top: 100%; 
+  left: 0; 
+  background-color: #fff; 
+  border: 1px solid #ccc; 
+  list-style: none; 
+  padding: 5px 0; 
+  max-height: 200px; /* Limit list height (optional) */
+  overflow-y: auto; /* Enable scrolling for long lists */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  width: 100%; /* Match the input width */
+  z-index: 1; /* Ensure list appears above other elements */
+}
+
+
+.btn-send {
+  background-color: #030640; /* Couleur de fond du bouton */
+  color: white; /* Couleur du texte du bouton */
+  border: 2px solid #030640; /* Bordure du bouton */
+}
+.message-container {
+  overflow-y: auto;
+  max-height: calc(100vh - 250px); /* Ajustez selon vos besoins */
+}
+
+.message-input-row {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #fff;
+  z-index: 1000;
+  padding: 10px;
+}
+.reaction-section{
+  padding-left: 80%;
+  
+}
+.margin{
+  margin: 3px;
+}
+.messages-wrapper {
+  max-height: calc(100% - 100px); 
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column-reverse; 
+}
+html, body {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* Pour empêcher tout défilement de la page */
+}
+
+.btn-outline-primary {
+    background: #030640!;
+    border-radius: 15px;
+    background-color: #030640;
+    color: #f6f2e3;
+    border: 2px solid #030640;
+    margin: 2px;
+}
+.btn-outline-primary-icon {
+  background: #a9aabd!;
+  background-color: #a9aabd;
+  color: white;
+  border: 2px solid #a9aabd;
+  margin: 0;
+}
+.botavatar{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%; /* Rend l'image circulaire */
+  object-fit: cover; /* Garantit que l'image remplit entièrement le cercle */
+  margin-right: 10px; 
+}
+.useravatar{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%; /* Rend l'image circulaire */
+  object-fit: cover; /* Garantit que l'image remplit entièrement le cercle */
+  margin-right: 10px; 
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+
+
+.logo{
+  width: 80px; 
+  height: 40px; 
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+
+
+
+.card-title {
+  font-weight: bold;
+  margin-top: 10px;
+  width: 100;
+}
+
+.card-text {
+  margin-bottom: 10px;
+}
+
+.form-control {
+  width: 400px;
+  border-radius: 5px;
+}
+
+.list-group {
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+.list-group-item {
+  padding: 10px;
+  border-radius: 5px;
+  transition: 0.2s ease-in-out;
+}
+
+.list-group-item:hover {
+  background-color: #f0f0f0;
+}
+
+.btn-primary2 {
+  margin-top: 10px;
+  border-radius: 15px;
+  background-color: #01032639;
+  color: #ffffff;
+  font-size: 12px;
+}
+.margin2{
+  margin-right: 15px;
+}
+.btn-primary {
+  margin-top: 10px;
+  border-radius: 5px;
+  background-color: #010326;
+  color: #fff;
+  font-size: 12px;
+}
+.title {
+  font-size: 35px;
+  color: #333;
+  
+  margin-bottom: 40px;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.fec-name {
+  text-align: right;
+  font-size: 15px;
+  color: #a9aabd;
+  font-style: bold;
+  
+
+}
+
+.font-italic {
+  font-style: bold;
+  color: #030640;
+  
+}
+
+.fixed-name {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #fff; /* Assurez-vous que le fond est clair pour une meilleure lisibilité */
+  z-index: 999; /* Assurez-vous que le nom est au-dessus du reste du contenu */
+  border-bottom: 1px solid #ccc; /* Optionnel : Ajoute une bordure en bas pour séparer du contenu */
+  padding: 10px; /* Espacement interne pour le contenu */
+}
+
+
+
+.card-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card {
+  width: 100%;
+ align-items: center;
+  background-color: #fff;
+  padding: 15px;
+  height: 250px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card h2 {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 5px;
+}
+
+li::before {
+  content: "\2022"; /* Utilisation du caractère bullet pour les listes */
+  color: #666;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+.conversation-item {
+  padding: 10px;
+  border-bottom: 1px solid hsl(220, 2%, 76%); /* Bordure inférieure pour séparer les éléments de la liste */
+}
+.paraphrase-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.paraphrase-item {
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #f9f9f9;
+}
+
+.paraphrase-original {
+  font-weight: bold;
+}
+
+.paraphrase-arrow {
+  margin: 0 5px;
+}
