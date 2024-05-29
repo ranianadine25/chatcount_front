@@ -1,9 +1,5 @@
 export const navbarData = [
-{
-    routeLink: 'dashboard',
-    icon: 'fal fa-home',
-    label: 'Dashboard'
-},
+
 {
     routeLink: 'chat/:id',
     icon: 'fal fa-comment-alt',

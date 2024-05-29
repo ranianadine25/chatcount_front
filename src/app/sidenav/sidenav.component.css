@@ -1,11 +1,10 @@
 .sidenav {
     background: #030640;
     transition: all .5s ease;
-    position: fixed;
-    z-index: 1;
+  
     top: 0;
-    width: 16.5625rem;
-    height: 100vh;
+    width: 250PX;
+    height: 100%;
     box-shadow: 0.063rem 0 1.25rem 0 #8690a3;
 
     .logo-container{
@@ -124,7 +123,7 @@
 }
 
 .third-column {
-    width: 100%;
+   
     position: absolute;
     bottom: 0;
 }

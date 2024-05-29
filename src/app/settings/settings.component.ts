@@ -547,8 +547,8 @@ deletePatternData(rowIndex: number, columnIndex: number): void {
     fileUploadDialog.click();
   }
   handleFileUpload2(file: File) {
-    if (file.name !== "similarity.csv") {
-      alert("Le fichier importé doit avoir le nom similarity.csv.");
+    if (file.name !== "questions.csv") {
+      alert("Le fichier importé doit avoir le nom questions.csv.");
       return; 
     }
   

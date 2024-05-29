@@ -38,6 +38,9 @@ import io from 'socket.io-client';
     }
   
     markAsRed (userId: string | undefined) {
+      if (!userId) {
+        throw new Error("L'ID de l'utilisateur est requis pour marquer les notifications comme lues.");
+      }
       return this.http.put(environment.apiUrl + `/notif/markAsRead/${userId}`, {});
     }
   }

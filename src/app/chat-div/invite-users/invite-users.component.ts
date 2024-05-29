@@ -52,7 +52,11 @@ export class InviteUsersComponent implements OnInit {
 
   inviteUsers(): void {
     if (this.conversationId && this.selectedUsers.length > 0) {
-      this.conversationService.inviteUsersToConversation(this.conversationId, this.selectedUsers).subscribe(
+      const userIds = [...this.selectedUsers];
+      if (this.currentUser?.userInfo._id) {
+        userIds.push(this.currentUser.userInfo._id);
+      }
+      this.conversationService.inviteUsersToConversation(this.conversationId, userIds).subscribe(
         response => {
           console.log('Users invited successfully:', response);
         },
@@ -60,8 +64,7 @@ export class InviteUsersComponent implements OnInit {
           console.error('Error inviting users:', error);
         }
       );
-    } else {
-      console.error('No users selected.'); // Indique s'il n'y a aucun utilisateur sélectionné
     }
-  }  
+  }
+   
 }

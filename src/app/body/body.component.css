@@ -1,22 +1,57 @@
-.body{
-    width: calc(100% - 5rem);
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.body {
+    display: flex;
+    flex-direction: column;
     height: 100vh;
-    margin-left: 5rem;
-    z-index: 0;
-    position: relative;
-    top: 0;
-    transition: all .5s ease;
     background: #f4f7fa;
     padding: 3rem;
 }
-.body-trimmed {
 
+.navbar-container {
+    flex: 0 0 auto; 
+}
+
+.content-container {
+    flex: 1 1 auto; 
+    overflow-y: auto; 
+}
+
+.body-trimmed {
     width: calc(100% - 16.5625rem);
     margin-left: 16.5625rem;
-
 }
-.body-md-screen{
+
+.body-md-screen {
     width: calc(100% - 5rem);
     margin-left: 5rem;
+}
 
+
+.content-container::-webkit-scrollbar {
+    width: 12px; 
+}
+
+.content-container::-webkit-scrollbar-track {
+    background: transparent; 
+}
+
+.content-container::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2); 
+    border-radius: 10px; 
+}
+
+/* Styles pour Firefox */
+.content-container {
+    scrollbar-width: thin; 
+    scrollbar-color: rgba(0, 0, 0, 0.2) transparent; 
+}
+
+
+.content-container {
+    -ms-overflow-style: -ms-autohiding-scrollbar; 
 }

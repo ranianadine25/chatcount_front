@@ -3,7 +3,6 @@ import { ChatService, Message } from './chatbot.service';
 import { FecService } from './file-upload/file-upload.service';
 import { ViewChild, ElementRef } from '@angular/core'; 
 import { AuthService } from '../authetification/auth.service';
-import { environment } from '../environment/environment';
 import { User } from '../authetification/login/model_user';
 import { isPlatformBrowser } from '@angular/common';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -12,6 +11,7 @@ import { Subscription, debounceTime, distinctUntilChanged, switchMap } from 'rxj
 import { ActivatedRoute, Router } from '@angular/router';
 import { trigger, transition, style, animate } from '@angular/animations'; 
 import { FormControl } from '@angular/forms';
+import { environment } from '../environment/environment.prod';
 
 @Component({
   selector: 'app-chatbot',

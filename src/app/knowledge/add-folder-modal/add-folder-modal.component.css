@@ -30,6 +30,7 @@ display: flex; /* Afficher la superposition lorsque active */
 justify-content: center;
 align-items: center;
 }
+
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }

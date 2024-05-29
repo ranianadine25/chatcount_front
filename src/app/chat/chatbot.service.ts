@@ -171,6 +171,9 @@ export class ChatService {
   getConversations(userId : string): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/conversation/conversations/${userId}`);
   }
+  getSharedConversations(userId : string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/conversation/sharedconversations/${userId}`);
+  }
   getConversationMessages(conversationId : string): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/conversation/conversationsMessage/${conversationId}`);
   }

@@ -27,13 +27,11 @@ export class SidenavComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  reloadPage(routeLink: string, id?: string): void {
+  reloadPage(routeLink: string): void {
     let url = '/pages/' + routeLink;
-  
-    console.log("constructed URL:", url);
-    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
-      this.router.navigate([url])
-    );
+    this.router.navigate([url]).then(() => {
+      location.reload();
+    });
   }
   
   

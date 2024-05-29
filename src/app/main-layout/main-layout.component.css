@@ -1,0 +1,16 @@
+.main-layout {
+    display: flex;
+    height: 100vh; 
+    overflow: hidden;
+    scrollbar-width: none;/* Ajuster selon les besoins */
+  }
+  
+  .sidenav {
+    width: 250px; /* Ajuster selon les besoins */
+    background-color: #030640; /* Exemple de couleur */
+  }
+  
+  .content {
+    flex-grow: 1;
+    background-color: #f4f7fa; /* Exemple de couleur */
+  }

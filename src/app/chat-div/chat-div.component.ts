@@ -21,6 +21,9 @@ import { InviteUsersComponent } from './invite-users/invite-users.component';
 })
 export class ChatDivComponent implements OnInit {
   conversations: any = [];
+  sharedconversation :any = [];
+  showOwnerConversations: boolean = true;
+  showSharedConversations: boolean = false;
   private subscriptions = new Subscription();
   @ViewChild('conversationList') conversationList: ElementRef | undefined;
 
@@ -51,17 +54,26 @@ export class ChatDivComponent implements OnInit {
         this.currentUser = user;
         console.log("tawa",this.currentUser?.userInfo._id);
         this.getConversations();
+        this.getSharedConversations();
 
       });
     } else {
     }
   }
+  toggleConversationType(isOwnerConversation: boolean): void {
+    this.showOwnerConversations = isOwnerConversation;
+    this.showSharedConversations = !isOwnerConversation;
+  }
+
   openDropdown(event: MouseEvent, dropdown: NgbDropdown): void {
     event.stopPropagation();
   }
 
   closeDropdown(dropdown: NgbDropdown): void {
     dropdown.close();
+  }
+  get selectedConversations(): any[] {
+    return this.showOwnerConversations ? this.conversations : this.sharedconversation;
   }
   getConversations(): void {
     const userId = this.currentUser?.userInfo._id;
@@ -78,6 +90,32 @@ export class ChatDivComponent implements OnInit {
             }));
           } else {
             this.conversations = [];
+          }
+        },
+        (error) => {
+          this.alertServ.alertHandler('Erreur lors de la récupération des conversations', 'error');
+        },
+        () => {
+          this.loadingData = false;
+        }
+      )
+    );
+  }
+  getSharedConversations(): void {
+    const userId = this.currentUser?.userInfo._id;
+    this.loadingData = true;
+    this.subscriptions.add(
+      this.conversationService.getSharedConversations(userId!).subscribe(
+        (response: any) => {
+          if (response && response.conversations) {
+            const allConversations = response.conversations;
+            const lastTenConversations = allConversations.slice(-20).reverse();
+            this.sharedconversation = lastTenConversations.map((conv: any) => ({
+              ...conv,
+              showInviteUsers: false // Ajout de cette ligne pour gérer l'invitation des utilisateurs
+            }));
+          } else {
+            this.sharedconversation = [];
           }
         },
         (error) => {
@@ -171,11 +209,18 @@ export class ChatDivComponent implements OnInit {
   }
   getFirstMessageText(conversation: Conversation): string {
     if (conversation.messages.length > 0) {
-      return conversation.messages[0].text || ''; 
+      const firstMessage = conversation.messages[0].text || '';
+      const words = firstMessage.split(' '); // Divise le texte en mots en utilisant l'espace comme séparateur
+      if (words.length >= 2) {
+        return words.slice(0, 2).join(' '); // Prend les deux premiers mots et les joint avec un espace
+      } else {
+        return firstMessage; 
+      }
     } else {
       return conversation.name; 
     }
   }
+  
   toggleDropdown(conversation: any): void {
     conversation.showDropdown = !conversation.showDropdown;
 

@@ -1,12 +1,26 @@
 <div class="chat-div">
-  <button class="add-chat-button" style="background-color: #00bda700; color: #f6f2e3; border-radius: 25px; border: 2px solid #f6f2e3; padding: 6px 25px;" (click)="addChat()">
-    <i class="fas fa-plus"></i> Nouvelle Conversation
-  </button>
+  <div style="padding: 15px;">
+    <button class=" " 
+    style="background-color: #00bda700; color: #f6f2e3; border-radius: 25px; border: 2px solid #f6f2e3; text-wrap: nowrap ;  padding: 12px; " (click)="addChat()">
+      <i class="fas fa-plus"></i> Nouvelle Conversation
+    </button>
+  </div>
 
   <h2 class="font-circular-std-black-20" style="margin-bottom: 6px; margin-top:10px; margin-left: 6px;">Discussions récentes</h2>
 
+  <!-- Switch pour les types de conversations -->
+<!-- Switch pour les types de conversations -->
+<div class="conversation-switch">
+  <div class="switch-button" [class.active]="showOwnerConversations" (click)="toggleConversationType(true)">
+    <div class="switch-button-text">Personnelles</div>
+  </div>
+  <div class="switch-button" [class.active]="showSharedConversations" (click)="toggleConversationType(false)">
+    <div class="switch-button-text">Partagées</div>
+  </div>
+</div>
+
   <div class="conversation-list" #conversationList>
-    <div *ngFor="let conversation of conversations" class="conversation-item">
+    <div *ngFor="let conversation of selectedConversations" class="conversation-item">
       <h2 class="conversation-name">
         <i class="fas fa-comment-alt" style="margin-right: 4px;"></i>
         <span *ngIf="!conversation.isRenaming" (click)="loadConversationHistory(conversation._id)">{{ getFirstMessageText(conversation) }}</span>

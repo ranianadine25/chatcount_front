@@ -1,12 +1,22 @@
-.add-chat-button {
-margin-top: 10px; 
-display: flex;
-width: 3rem;
-min-width: 3rem;
-padding: 0.938rem 0.938rem 0 0.938rem;
-  width: 100%;
-
+.button-custom-add {
+  background-color: #00bda700;
+  color: #f6f2e3;
+  border-radius: 25px;
+  border: 2px solid #f6f2e3;
+  padding: 12px;
+  white-space: nowrap;
 }
+
+.button-custom-add:hover {
+  background-color: #00bda7;
+  border-color: #fff;
+  color: #fff;
+}
+
+.button-custom-add i {
+  margin-right: 5px;
+}
+
 
 .add-chat-button:hover {
   background-color: hsla(0, 0%, 80%, 0.707); /* Example hover effect */
@@ -102,3 +112,27 @@ padding: 0.938rem 0.938rem 0 0.938rem;
   background-color: hsla(0, 0%, 80%, 0.707);
 }
 
+
+.conversation-switch {
+  display: flex;
+  border: 1px solid #fef7f7;
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+.switch-button {
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.switch-button.active {
+  background-color: #007bff;
+  color: white;
+}
+
+.switch-button-text {
+  white-space: nowrap;
+}

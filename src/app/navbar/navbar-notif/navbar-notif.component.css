@@ -1,83 +1,96 @@
-.notif-container {
-    position: fixed;
-    z-index: 1000;
-    top: 0;
-    bottom: 0;
+.notification-wrapper {
+    position: relative;
+    display: inline-block;
+
+  }
+  
+  .notification-icon {
+    cursor: pointer;
+  }
+  
+  .notification-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
     right: 0;
-    display: flex;
-    flex-direction: column;
-    transition: 400ms ease-in-out;
-    overflow: hidden;
-    background-color: white;
-    box-shadow: 0 15px 30px 0 rgb(34 41 47 / 11%), 0 5px 15px 0 rgb(34 41 47 / 8%);
-
-    span {
-        white-space: nowrap;
-        width: 350px;
-    }
-}
-
-.notif-item {
-    padding: 1.1rem 1.1rem;
-    border-bottom: 1px solid #ebe9f1;
-    flex-wrap: nowrap;
-    margin: 0px;
-}
-
-p {
-    line-height: 1.2;
-}
-
-.small{
-    margin-bottom: 2px;
-}
-
-.notifications-list {
-    width: 500px;
-    height: calc(100vh - 50px);
-    padding-bottom: 25px;
-    direction: rtl;
-    overflow-y: auto;
-    * {
-        direction: ltr;
-    }
-}
-
-
-/* width */
-::-webkit-scrollbar {
-    width: 8px;
-  }
-  
-  /* Track */
-   ::-webkit-scrollbar-track {
-    background: rgb(248, 248, 248); 
-   }
-   
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: rgb(205, 205, 205); 
-    border-radius: 10px;
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: #b1b1b1;
-  }
-
-  .spinner-border {
-    height: 15px;
-    width: 15px;
-    border-width: .2rem;
-}
-.btn-primary {
-    margin-left: 60px;
-    margin-top: 10px;
+    min-width: 250px;
+    background-color: #fff;
+    border: 1px solid #ccc;
     border-radius: 5px;
-    background-color: #92b3f5;
-    color: #fff;
-    font-size: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    z-index: 1000;
   }
+  .notifitem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    flex-direction: row;
+  }
+  .notifitem2 {
+    display: flex;
+    justify-content: space-between;
+  
+    padding: 10px;
+  
+    flex-direction: row;
+  }
+  .notification-wrapper.show .notification-dropdown {
+    display: block;
+  }
+  
+  .notification-header,
+  .notification-footer {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .notification-count {
+    color: #888;
+  }
+  
+  .notification-list {
+    max-height: 300px;
+    overflow-y: auto;
+  }
+  
+  .notification-item {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .notification-item:hover {
+    background-color: #f5f5f5;
+  }
+  
+  .notification-avatar {
+    margin-right: 10px;
+  }
+  
+  .notification-text {
+    font-size: 12px;
+    margin-bottom: 2px;
+  }
+  
+  .notification-link {
+    display: block;
+    padding: 10px;
+    text-align: center;
+    font-size: 10px;
+    text-decoration: none;
+    color: #f60404;
+    background-color: #6610f2;
+    border-radius: 5px 5px 5px 5px;
+  }
+  
+  .notification-link:hover {
+    background-color: #0056b3;
+  }
+
   .badge {
     display: inline-block;
     padding: 0.25em 0.4em;
@@ -97,7 +110,138 @@ p {
     padding-left: 0.6em;
     border-radius: 10rem;
 }
-.notification-text {
-    color: #050c35; 
+
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
 }
 
+/* Track */
+ ::-webkit-scrollbar-track {
+  background: rgb(248, 248, 248); 
+ }
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(205, 205, 205); 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #b1b1b1;
+}
+
+.spinner-border {
+  height: 15px;
+  width: 15px;
+  border-width: .2rem;
+}
+
+@media (max-width: 768px) {
+    .notification-dropdown {
+      right: 0;
+      left: auto;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .notification-dropdown {
+      right: 0;
+      left: auto;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .notification-dropdown {
+      right: 0;
+      left: auto;
+    }
+  }
+  
+  @media (max-width: 360px) {
+    .notification-dropdown {
+      right: 0;
+      left: auto;
+    }
+  }
+  
+  @media (max-width: 320px) {
+    .notification-dropdown {
+      right: 0;
+      left: auto;
+    }
+  }
+  
+  @media (max-width: 280px) {
+    .notification-dropdown {
+      right: 0;
+      left: auto;
+    }
+  }
+  
+  @media (max-width: 240px) {
+    .notification-dropdown {
+      right: 0;
+      left: auto;
+    }
+  }
+  
+  @media (max-width: 200px) {
+    .notification-dropdown {
+      right: 0;
+      left: auto;
+    }
+  }
+  
+  @media (max-width: 180px) {
+    .notification-dropdown {
+      right: 0;
+      left: auto;
+    }
+  }
+  
+  @media (max-width: 160px) {
+    .notification-dropdown {
+      right: 0;
+      left: auto;
+    }
+  }
+  
+  @media (max-width: 140px) {
+    .notification-dropdown {
+      right: 0;
+      left: auto;
+    }
+  }
+  
+  @media (max-width: 120px) {
+    .notification-dropdown {
+      right: 0;
+      left: auto;
+    }
+  }
+  
+  @media (max-width: 100px) {
+    .notification-dropdown {
+      right: 0;
+      left: auto;
+    }
+  }
+  
+  @media (max-width: 80px) {
+    .notification-dropdown {
+      right: 0;
+      left: auto;
+    }
+  }
+  
+  @media (max-width: 60px) {
+    .notification-dropdown {
+      right: 0;
+      left: auto;
+    }
+  }
+  

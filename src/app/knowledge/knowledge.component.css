@@ -5,9 +5,14 @@
   overflow: hidden;
   min-width: 150vh;
   min-height: 100vh;
-  margin-left: 18%;
+
   }
-  
+  .center-compont{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+  }
   .add-fec-section, .fec-list-section {
     width: 80%;
     margin-bottom: 20px;
