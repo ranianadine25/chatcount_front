@@ -21,7 +21,7 @@ import { environment } from '../environment/environment.prod';
   notifsCount: number = 0;
 
   subscription = new Subscription();
-  constructor(private authService: AuthService,@Inject(PLATFORM_ID) private platformId: Object, private notificationsService: NotificationsService) {
+  constructor( private router: Router,private authService: AuthService,@Inject(PLATFORM_ID) private platformId: Object, private notificationsService: NotificationsService) {
     this.notificationsService.onOrderNotificationReceived().subscribe((notif :any)=> {
       this.notifsCount = this.notifications.unshift();
     });
@@ -53,5 +53,9 @@ import { environment } from '../environment/environment.prod';
   logout(): void {
     this.authService.logout(); 
   }
- 
+  profile():void {
+    this.router.navigate(['/pages/profile', this.currentUser?.userInfo._id]).then(() => {
+      location.reload();
+    });
+}
 }

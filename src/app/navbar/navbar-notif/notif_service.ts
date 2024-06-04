@@ -33,15 +33,13 @@ import io from 'socket.io-client';
       return this.http.get<Notification[]>(`${environment.apiUrl}/notif/getNotifications`);
     }
     
+
     markNotificationAsRead(notificationId: string): Observable<any> {
-      return this.http.put<any>(`/notif/markAsRead/${notificationId}`, {});
+      return this.http.put<any>(`${environment.apiUrl}/notif/markAsRead/${notificationId}`, {});
     }
   
-    markAsRed (userId: string | undefined) {
-      if (!userId) {
-        throw new Error("L'ID de l'utilisateur est requis pour marquer les notifications comme lues.");
-      }
-      return this.http.put(environment.apiUrl + `/notif/markAsRead/${userId}`, {});
+    markAsRed(senderId: string): Observable<any> {
+      return this.http.put<any>(`${environment.apiUrl}/notif/markAsRead/${senderId}`, {});
     }
   }
   

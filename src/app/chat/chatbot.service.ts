@@ -79,14 +79,16 @@ export class ChatService {
       }
   });
   
-  this.socket.on('message', (data: any) => {
-    let botMessage: Message;
+  this.socket.on('message', (data : any) => {
+    let botMessage;
     if (typeof data.text === 'string') {
       botMessage = new Message(data.sender, data.text, data.likes, data.dislikes, data.comments);
     } else if (Array.isArray(data.text)) {
       let text = '';
-      data.text.forEach((item: MonthData) => {
-        text += `${item.month} | ${item.revenue} | ${item.percentage} ;\n`;
+      data.text.forEach((item: any) => {
+        const revenue = item.revenue ? item.revenue : ''; // Remplace 'undefined' par une chaîne vide
+        const percentage = item.percentage ? item.percentage : ''; // Remplace 'undefined' par une chaîne vide
+        text += `${item.month} | ${revenue} | ${percentage} ;\n`;
       });
       botMessage = new Message(data.sender, text, data.likes, data.dislikes, data.comments);
     } else {
@@ -103,37 +105,45 @@ export class ChatService {
   }
   async saveMessageToDatabase(
     sender: string,
-    text: string | object | { month: string; revenue: string; percentage: string }[], // Modifiez le type de texte pour accepter une chaîne, un objet ou un tableau d'objets
+    text: string | any[] | ArrayLike<unknown> | { [s: string]: unknown; } | undefined,
     likes: number,
     dislikes: number,
     conversationId: string,
-    comments: string[] // Tableau de commentaires
+    comments: string[]
   ) {
     if (conversationId && conversationId.trim() !== '') {
       let textToSave = ''; 
   
       if (Array.isArray(text)) {
-        textToSave = text.map((item: { month: string; revenue: string; percentage: string }) => {
-          return `${item.month} | ${item.revenue} | ${item.percentage} ;`;
+        textToSave = text.map((item) => {
+          const revenue = item.revenue ? item.revenue : ''; // Remplace 'undefined' par une chaîne vide
+          const percentage = item.percentage ? item.percentage : ''; // Remplace 'undefined' par une chaîne vide
+          return `${item.month} | ${revenue} | ${percentage} ;`;
         }).join('\n');
       } else if (typeof text === 'object') {
-        textToSave = JSON.stringify(text, null, 2); 
+        textToSave = JSON.stringify(
+          Object.fromEntries(
+            Object.entries(text).map(([key, value]) => [key, value !== undefined ? value : '']) // Remplace 'undefined' par une chaîne vide
+          ),
+          null,
+          2
+        );
       } else {
-        textToSave = text;
+        textToSave = text !== undefined ? text : ''; // Remplace 'undefined' par une chaîne vide
       }
   
-      this.saveConversation([{ sender, text: textToSave, likes, dislikes, comments }], conversationId)
-        .subscribe(
-          (response) => {
-            console.log("Message enregistré avec succès :", response);
-            this.likes = likes;
-            this.dislikes = dislikes;
-            this.comments = comments;
-          },
-          (error) => {
-            console.error("Erreur lors de l'enregistrement du message :", error);
-          }
-        );
+      try {
+        const response = await this.saveConversation(
+          [{ sender, text: textToSave, likes, dislikes, comments }],
+          conversationId
+        ).toPromise();
+        console.log("Message enregistré avec succès :", response);
+        this.likes = likes;
+        this.dislikes = dislikes;
+        this.comments = comments;
+      } catch (error) {
+        console.error("Erreur lors de l'enregistrement du message :", error);
+      }
     } else {
       console.error("ConversationId invalide :", conversationId);
     }

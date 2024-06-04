@@ -5,8 +5,8 @@
   overflow: hidden;
   min-width: 150vh;
   min-height: 100vh;
- 
-
+  position: fixed;
+  margin-left: 10%;
 
 }
 
@@ -21,6 +21,7 @@
 .custom-table {
   color: #fbefef; /* Couleur du texte */
   background-color: #ffffff; /* Couleur d'arrière-plan */
+  /* Ajoutez d'autres styles selon vos besoins */
 }
 
 .custom-table th {
@@ -45,21 +46,17 @@
   ;
 }
 
-.input-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 .input-group {
   position: fixed;
+  margin-left: 120px;
   bottom: 0;
-  max-width: 80%;
-  min-width: 60%;
-   width: auto;
+  left: 50%; /* Place la div au milieu horizontalement */
+  transform: translateX(-50%); /* Décale la div de 50% de sa propre largeur vers la gauche */
+  width: 80%; /* ajustez la largeur selon vos besoins */
   background-color: #fff; /* Vous pouvez ajuster la couleur de fond selon vos besoins */
   padding: 12px;
   box-shadow: 0px -2px 5px 0px rgba(0,0,0,0.1); /* Ajoute une légère ombre sous la div */
-  z-index: 1; /* Assure que la div est au-dessus du contenu */
+  z-index: 900; /* Assure que la div est au-dessus du contenu */
 }
 
 .input-suggestions {
@@ -88,11 +85,11 @@
 }
 
 .message-input-row {
-  position: flex;
+  position: fixed;
   bottom: 0;
   width: 100%;
   background-color: #fff;
-
+  z-index: 950;
   padding: 10px;
 }
 .reaction-section{
@@ -198,9 +195,6 @@ html, body {
   color: #ffffff;
   font-size: 12px;
 }
-Mejri
-Mejri Achref
-
 .margin2{
   margin-right: 15px;
 }
@@ -244,7 +238,7 @@ Mejri Achref
   top: 0;
   width: 100%;
   background-color: #fff; /* Assurez-vous que le fond est clair pour une meilleure lisibilité */
-  z-index: 999; /* Assurez-vous que le nom est au-dessus du reste du contenu */
+  z-index: 920; /* Assurez-vous que le nom est au-dessus du reste du contenu */
   border-bottom: 1px solid #ccc; /* Optionnel : Ajoute une bordure en bas pour séparer du contenu */
   padding: 10px; /* Espacement interne pour le contenu */
 }

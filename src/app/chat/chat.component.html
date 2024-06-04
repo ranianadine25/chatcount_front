@@ -6,7 +6,7 @@
       <div class="message-list">
         <div class="message-list" *ngIf="conversationId === ':id'">
 
-          <h1 class="title" style="margin-left: 35px; margin-top: 8%; font-weight:lighter;font-size: 68px;">Comment puis-je vous aider aujourd'hui ?</h1>
+          <h1 class="title" style="margin-left: 35px; margin-top: 8%; font-weight:lighter;font-size: 60px;">Comment puis-je vous aider aujourd'hui ?</h1>
         
           <div class="card-container">
             <div class="card" >
@@ -50,9 +50,9 @@
                     <table class="table custom-table">
                       <tbody class="alternate-row">
                         <tr>
-                          <th>Mois</th>
-                          <th>Valeur</th>
-                          <th>Pourcentage</th>
+                          <th>A</th>
+                          <th>B</th>
+                          <th>C</th>
                         </tr>
                         <ng-container *ngFor="let row of message.text.split(';'); let j = index">
                           <tr *ngIf="j % 3 === 0">

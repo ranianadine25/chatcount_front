@@ -13,7 +13,7 @@ import io from 'socket.io-client';
   templateUrl: './navbar-notif.component.html',
   styleUrls: ['./navbar-notif.component.css']
 })
-export class NavbarNotifComponent implements OnInit, OnDestroy {
+export class NavbarNotifComponent  implements OnInit, OnDestroy {
   public loadingData: boolean = false;
   public socket: any;
 
@@ -26,16 +26,17 @@ export class NavbarNotifComponent implements OnInit, OnDestroy {
   pageSize = 10;
   unreadNotifsCount = 0;
   canShowMore = true;
+  dropdownVisible: boolean = false;
+  // Remove the duplicate declaration of 'notifications' variable
+  // notifications: Notification[] = []; 
 
   subscriptions = new Subscription();
   loadingNotifs = false;
   imgPrefix = environment.apiUrl + '/avatars/';
-  dropdownVisible: boolean = false;
-
-  constructor(
-    private notificationsService: NotificationsService,
+  constructor( private notificationsService: NotificationsService,
     private authService: AuthService,
-    @Inject(PLATFORM_ID) private platformId: Object
+
+    @Inject(PLATFORM_ID) private platformId: Object,
   ) {
     this.socket = io(environment.apiUrl);
     this.socket.on('connect_error', (error: any) => {
@@ -48,34 +49,39 @@ export class NavbarNotifComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    
     if (isPlatformBrowser(this.platformId)) {
       this.authService.retrieveCurrentUserFromLocalStorage();
       this.authService.currentUser$.subscribe(user => {
         this.currentUser = user;
-        if (this.currentUser) {
-          // L'utilisateur est récupéré correctement
-          this.getNotifications();
-        } else {
-          // Gérez le cas où l'utilisateur n'est pas défini
-          console.error("L'utilisateur actuel est introuvable.");
-        }
       });
     }
-
     this.socket.on("new-mission-notification", (data: any) => {
       this.unreadNotifsCount = data.totalUnreadNotifications;
-      this.getNotifications();
     });
+    console.log("thisssssnotif",this.unreadNotifsCount);
+    this.getNotifications();
+    this.notificationsService.getNotifications().subscribe(
+      (notifications : any) => {
+        this.notifications = notifications;
 
+        this.unreadNotifsCount = this.calculateUnreadNotifications(notifications);
+      },
+      (error) => {
+        console.error("Failed to fetch notifications:", error);
+      }
+    );
     let sub = this.notificationsService.onOrderNotificationReceived().subscribe(
       (notif) => {
         this.unreadNotifsCount++;
-        this.getNotifications();
+        console.log("notif", this.unreadNotifsCount);
       },
       (error) => {
         console.error("Erreur lors de la réception de notifications :", error);
       }
     );
+    ;
+  
     this.subscriptions.add(sub);
   }
 
@@ -86,9 +92,9 @@ export class NavbarNotifComponent implements OnInit, OnDestroy {
         (response: any) => {
           if (response && Array.isArray(response)) {
             const allNotifs = response;
-            this.notifications = allNotifs;
+            this.notifications = allNotifs; 
+  
             this.lastFiveNotifications = allNotifs.slice(-5).reverse();
-            this.unreadNotifsCount = this.calculateUnreadNotifications(allNotifs);
           } else {
             this.notifications = [];
           }
@@ -102,20 +108,21 @@ export class NavbarNotifComponent implements OnInit, OnDestroy {
       )
     );
   }
-
   calculateUnreadNotifications(notifications: Notification[]): number {
-    return notifications.filter(notification => !notification.seen).length;
+    let count = 0;
+    notifications.forEach((notification) => {
+      if (!notification.seen) {
+        count++;
+      }
+    });
+    return count;
   }
 
   markNotificationAsRead(notificationId: string): void {
     this.notificationsService.markNotificationAsRead(notificationId).subscribe(
       () => {
-        this.notifications = this.notifications.map(notification => {
-          if (notification._id === notificationId) {
-            notification.seen = true;
-          }
-          return notification;
-        });
+        // Mettre à jour la liste des notifications et le nombre de notifications non lues si nécessaire
+        this.notifications = this.notifications.filter((notification) => notification._id !== notificationId);
         this.unreadNotifsCount = this.calculateUnreadNotifications(this.notifications);
       },
       (error) => {
@@ -129,34 +136,55 @@ export class NavbarNotifComponent implements OnInit, OnDestroy {
     this.showAll = !this.showAll;
   }
 
-  markAsRead() {
-    if (this.currentUser?.userInfo?._id) {
-      this.notificationsService.markAsRed(this.currentUser.userInfo._id).subscribe(
-        () => {
-          this.unreadNotifsCount = 0;
-          this.notifications.forEach(notification => notification.seen = true);
-        },
-        (error) => {
-          console.error("Failed to mark all notifications as read:", error);
-        }
-      );
-    } else {
-      console.error("L'ID de l'utilisateur est indéfini.");
-    }
-  }
+
 
   onNgbDropdownToggle($event: boolean) {
-    if (!$event && this.unreadNotifsCount > 0) {
+    if ($event === false && this.unreadNotifsCount > 0) {
+      console.log(this.unreadNotifsCount);
       this.markAsRead();
+      this.unreadNotifsCount = 0;
+      this.notifications = this.notifications.map(notification => {
+        notification.seen = true;  // Mark notifications as seen in the UI
+        return notification;
+      });
     }
   }
-
+  
   toggleDropdown(event: Event) {
     event.stopPropagation();
     this.dropdownVisible = !this.dropdownVisible;
+    if (this.dropdownVisible && this.unreadNotifsCount > 0) {
+      console.log(this.unreadNotifsCount);
+      this.markAsRead();
+      this.unreadNotifsCount = 0;
+      this.notifications = this.notifications.map(notification => {
+        notification.seen = true;  // Mark notifications as seen in the UI
+        return notification;
+      });
+    }
+  }
+  
+  markAsRead() {
+    if (this.currentUser && this.currentUser.userInfo) {
+      this.notificationsService.markAsRed(this.currentUser.userInfo._id).subscribe(
+        data => {
+          console.log('Notifications marked as read:', data);
+          // Optionally fetch notifications again to update the state
+          this.getNotifications();
+        },
+        error => {
+          console.error('Failed to mark notifications as read:', error);
+        }
+      );
+    }
+  }
+  
+  showMoreNotifications() {
+    this.page++;
+    this.getNotifications();
   }
 
   ngOnDestroy(): void {
-    this.subscriptions.unsubscribe();
+      this.subscriptions.unsubscribe();
   }
 }

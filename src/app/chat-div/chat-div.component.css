@@ -136,3 +136,8 @@
 .switch-button-text {
   white-space: nowrap;
 }
+/* Ajoutez cette animation dans vos styles globaux */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

@@ -1,4 +1,4 @@
-import { Component, OnInit, PLATFORM_ID, Inject, ViewChild, ElementRef, NgModule } from '@angular/core';
+import { Component, OnInit, PLATFORM_ID, Inject, ViewChild, ElementRef, NgModule, HostListener } from '@angular/core';
 import { NgbDropdown, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
@@ -209,25 +209,33 @@ export class ChatDivComponent implements OnInit {
   }
   getFirstMessageText(conversation: Conversation): string {
     if (conversation.messages.length > 0) {
-      const firstMessage = conversation.messages[0].text || '';
+      const firstMessage = typeof conversation.messages[0].text === 'string' ? conversation.messages[0].text : '';
       const words = firstMessage.split(' '); // Divise le texte en mots en utilisant l'espace comme séparateur
       if (words.length >= 2) {
         return words.slice(0, 2).join(' '); // Prend les deux premiers mots et les joint avec un espace
       } else {
-        return firstMessage; 
+        return firstMessage;
       }
     } else {
-      return conversation.name; 
+      return conversation.name;
     }
   }
+  
   
   toggleDropdown(conversation: any): void {
     conversation.showDropdown = !conversation.showDropdown;
 
   }
+  
   toggleInviteUsers(conversation: any): void {
     conversation.showInviteUsers = !conversation.showInviteUsers;
+    console.log(`Invitation popup for conversation ${conversation._id}: ${conversation.showInviteUsers}`);
+
   }
+  stopPropagation(event: MouseEvent): void {
+    event.stopPropagation();
+  }
+
   getInviteUsers(conversationId: string): void {
     const dialogRef = this.dialog.open(InviteUsersComponent, {
       width: '400px', // ajustez la largeur selon vos besoins

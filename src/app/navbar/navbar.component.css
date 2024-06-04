@@ -12,37 +12,43 @@
 }
 
 .navbar-nav {
-display: flex !important;
-align-items: center;
-list-style: none;
+  display: flex !important;
+  align-items: center;
+  list-style: none;
+  padding-left: 0; /* Add this to remove any default padding */
 }
 
 .navbar-nav .nav-item {
-margin-left: 10px;
+  margin-left: 20px; /* Reduce the left margin */
+}
+
+.navbar-nav .nav-item:first-child {
+  margin-left: 0; /* Ensure the first item does not have a left margin */
 }
 
 .navbar-nav .nav-item:last-child {
-margin-right: 0;
+  margin-right: 0;
 }
 
 .navbar-nav .nav-item > * {
-display: inline-flex;
-align-items: center;
+  display: inline-flex;
+  align-items: center;
 }
 
 .navbar-nav .nav-item > * {
-right: auto !important;
-left: 0 !important;
+  right: auto !important;
+  left: 0 !important;
 }
+
 .dropdown-menu {
-display: flex;
-flex-direction: column;
-
+  display: flex;
+  flex-direction: column;
 }
+
 .dropdown-menu-right {
-margin-top: 10px;
-right: 0 !important;
-left: auto !important;
+  margin-top: 10px;
+  right: 0 !important;
+  left: auto !important;
 }
 
 .touchspin-cart .touchspin-wrapper {
@@ -68,10 +74,7 @@ left: auto !important;
   position: relative;
 }
 
-
-
 .user-name {
-
   font-weight: bold;
 }
 
@@ -82,6 +85,4 @@ left: auto !important;
   background-color: green;
   border-radius: 50%;
   top: 12px;
-
-
 }

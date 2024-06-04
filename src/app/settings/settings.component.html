@@ -13,13 +13,16 @@
       <div class="add-fec-option">
         <button class="add-fec-button" [style.background-color]="patternsButtonColor" (click)="togglePatterns()"> <i class="fa fa-check"></i> Paramétrage des patterns </button>
       </div>
+      <div class="add-fec-option">
+        <button class="add-fec-button" [style.background-color]="SynonymeButtonColor" (click)="toggleSynonyme()"> <i class="fa fa-check"></i> Paramétrage des synonymes </button>
+      </div>
     </div>
   </div>
   <div class="fec-list-section">
     <div class="table-container" *ngIf="showKeywords">
 
       <div class="add-column">
-        <button  type="button" class="btn btn-outline-primary" style="background-color: bisque;" id="import-fec-button" (click)="openFileUploadDialog()">
+        <button  type="button" class="btn btn-outline-primary" style="background-color: bisque;" id="import-fec-button" (click)="openFileUploadDialog('csvData')">
           <i class="fa fa-file-import"></i> Importer votre Fichier.csv
         </button>
         <button (click)="exportData()" style="background-color: rgb(72, 100, 181);margin-left: 5px;">Exporter CSV</button>
@@ -66,6 +69,7 @@
       
       
     </div>
+ 
     <div class="table-container" *ngIf="showPatterns">
       <div class="add-column">
         <button  type="button" class="btn btn-outline-primary" style="background-color: bisque;" id="import-fec-button" (click)="openFileUploadDialog2()">
@@ -110,6 +114,56 @@
           </tr>
         </tbody>
       </table>
+      
+      
+    </div>
+    <div class="table-container" *ngIf="showSynonymes">
+
+      <div class="add-column">
+        <button  type="button" class="btn btn-outline-primary" style="background-color: bisque;" id="import-fec-button"  (click)="openFileUploadDialog('synonymes')">
+          <i class="fa fa-file-import"></i> Importer votre Fichier.csv
+        </button>
+        <button (click)="exportData()" style="background-color: rgb(72, 100, 181);margin-left: 5px;">Exporter CSV</button>
+        <div style="margin-top: 10px;">
+
+        <input  type="text" [(ngModel)]="newColumnName" placeholder="Nom de la colonne">
+        <button style="background-color: linear-gradient(to right, #9ccdf8, #030640);" (click)="addColumSynonymen()">Ajouter colonne</button>
+       </div>
+      </div>
+      
+      <table class="csv-table">
+        <thead>
+          <tr>
+            <th *ngFor="let column of synonymeData?.titre.split(';')">{{ column }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of synonymeData?.contenu; let i = index">
+            <td *ngFor="let cell of row.split(';'); let j = index">
+              <div *ngIf="!isEditing[i]?.[j]; else editMode" class="cell-content" >
+                <span style="margin-right: 10px;">{{ cell }} </span>
+
+                <span (click)="toggleEdit(i, j)" class="edit-icon"><i class="fas fa-edit"></i></span>
+                <div (click)="deleteSynonymeData(i, j)" class="delete-icon"><i class="fas fa-trash"></i></div>
+              </div>
+              <ng-template #editMode>
+                <input type="text" [(ngModel)]="synonymeData.contenu[i][j]" (blur)="updateSynonymeValue(i, j, $event)" />
+              </ng-template>
+            </td>
+          </tr>
+          <tr>
+            <ng-container *ngFor="let column of synonymeData?.titre.split(';'); let j = index">
+              <td>
+                <input type="text" [(ngModel)]="newRow[j]" />
+              </td>
+            </ng-container>
+            <td>
+              <button (click)="insertSynonymeRow()" class="add_button">Insérer</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      
       
       
     </div>

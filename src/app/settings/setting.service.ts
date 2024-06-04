@@ -45,6 +45,12 @@ export class SettingsService {
         catchError(this.handleError) 
       );
   }
+  getSynonymeData(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/synonymes/getSynonymeData`)
+      .pipe(
+        catchError(this.handleError) 
+      );
+  }
   getPatternsData(): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/patterns/getpatterns`)
       .pipe(
@@ -53,6 +59,12 @@ export class SettingsService {
   }
   insertCsvData(newRow: any): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/mots/insertCsv`, newRow)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+  insertSynonymeData(newRow: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/synonymes/insertSynonyme`, newRow)
       .pipe(
         catchError(this.handleError)
       );
@@ -73,6 +85,12 @@ export class SettingsService {
     };
     return this.http.delete<any>(`${this.apiUrl}/mots/deleteCsv`, options);
   }
+  deleteSynonymeData(rowIndex: number, columnIndex: number): Observable<any> {
+    const options = {
+      body: { rowIndex, columnIndex } 
+    };
+    return this.http.delete<any>(`${this.apiUrl}/synonymes/deleteSynonyme`, options);
+  }
   deletePatternData(rowIndex: number, columnIndex: number): Observable<any> {
     const options = {
       body: { rowIndex, columnIndex } 
@@ -83,11 +101,17 @@ export class SettingsService {
   updateCsvData(rowIndex: number, columnIndex: number, newValue: string): Observable<any> {
     return this.http.put<any>(`${this.apiUrl}/mots/updateCsv`, { rowIndex, columnIndex, newValue });
   }
+  updateSynonymeData(rowIndex: number, columnIndex: number, newValue: string): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/synonymes/updateSynonyme`, { rowIndex, columnIndex, newValue });
+  }
   updatePatternData(rowIndex: number, columnIndex: number, newValue: string): Observable<any> {
     return this.http.put<any>(`${this.apiUrl}/patterns/updatePattern`, { rowIndex, columnIndex, newValue });
   }
   addColumn(newColumn: string): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/mots/addColumn`, { newColumn });
+  }
+  addColumnSnonyme(newColumn: string): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/synonymes/addColumn`, { newColumn });
   }
   updateCsvDataColonne(newColumn: string): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/updateCsvDataColonne`, { newColumn });
@@ -96,6 +120,11 @@ export class SettingsService {
     const body = { fileName };
 
     return this.http.post<any>(`${this.apiUrl}/mots/addTabMotClets`, body);
+  }
+  uploadSynonymeFile(fileName: string): Observable<any> {
+    const body = { fileName };
+
+    return this.http.post<any>(`${this.apiUrl}/synonymes/addTabSynonyme`, body);
   }
   uploadPatternFile(fileName: string): Observable<any> {
     const body = { fileName };
