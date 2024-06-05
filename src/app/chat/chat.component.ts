@@ -12,6 +12,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { trigger, transition, style, animate } from '@angular/animations'; 
 import { FormControl } from '@angular/forms';
 import { environment } from '../environment/environment.prod';
+import { SettingsService } from '../settings/setting.service';
 
 @Component({
   selector: 'app-chatbot',
@@ -39,6 +40,7 @@ export class ChatComponent implements OnInit {
   recording = false; 
   public conversationExists: boolean = false;
   fecName :string | undefined;
+  fecId : String | undefined;
   question: string = '';
   selectedParaphrase: any;
 
@@ -57,6 +59,7 @@ export class ChatComponent implements OnInit {
   showCommentModal: boolean = false;
   selectedMessage: any;
   constructor(
+    public settingsService: SettingsService,
     public chatService: ChatService,
     private modal: NgbModal,
     public fecService: FecService,
@@ -94,8 +97,8 @@ export class ChatComponent implements OnInit {
       console.error('Erreur lors de la récupération des paraphrases:', error);
     });
     
-    
-  
+    this.getFecId();
+  console.log("fecId",this.fecId);
     this.route.paramMap.subscribe(params => {
       this.conversationId = params.get('id') || '';
       this.chatService.initSocketListeners(this.conversationId);
@@ -104,6 +107,16 @@ this.getParaphrases();
     if (this.conversationId) {
       this.conversationExists = true; 
       this.loadConversationMessages(this.conversationId);
+           
+      this.chatService.getFecId(this.conversationId).subscribe(
+        fecName => {
+          console.log("Nom du FEC reçu :", fecName);
+          this.fecId = fecName; // Mettez à jour la propriété fecName
+        },
+        error => {
+          console.error("Erreur lors de la récupération du nom du FEC :", error);
+        }
+      );
       this.chatService.getFecName(this.conversationId).subscribe(
         fecName => {
           console.log("Nom du FEC reçu :", fecName);
@@ -181,7 +194,17 @@ this.getParaphrases();
       this.showParaphrases = true; 
     }
   }
-  
+  getFecId(): void {
+    this.chatService.getFecId(this.conversationId).subscribe(
+      fecId => {
+        this.fecId = fecId;
+        console.log("ID du FEC récupéré :", this.fecId);
+      },
+      error => {
+        console.error("Erreur lors de la récupération de l'ID du FEC :", error);
+      }
+    );
+  }
   toggleCommentInput(index: number) {
     if (this.showCommentInput[index] !== undefined) {
       this.showCommentInput[index] = !this.showCommentInput[index];
@@ -373,6 +396,9 @@ this.getParaphrases();
   
   sendMessageFromButton() {
     this.sendMessage();
+  }
+  exportData(): void {
+    this.settingsService.exportCSVFec(this.fecId);
   }
   
 }

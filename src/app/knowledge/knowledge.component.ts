@@ -51,68 +51,56 @@ export class KnowledgeComponent implements OnInit {
     @Inject(PLATFORM_ID) private platformId: Object,
     private chatService: knowledgeService) {}
 
-  ngOnInit() {
-    const codeDossier = '627';
-    const filter = 'montant==1000';
-
-    this.knowledgeService.getComptableEntries(codeDossier, filter)
-      .subscribe(
-        data => this.entries = data,
-        error => console.error('Erreur:', error)
-      );
-    if (isPlatformBrowser(this.platformId)) {
-      this.authService.retrieveCurrentUserFromLocalStorage();
-      this.authService.currentUser$.subscribe(user => {
-        this.currentUser = user;
-        console.log("tawa",this.currentUser?.userInfo._id);
-
-      });
-    } else {
-    }
-    this.route.paramMap.subscribe(params => {
-      this.folderId = params.get('id') || '';
-
-     console.log("folderId",this.folderId);
-     if (this.folderId) {
-      this.fecService.getFecName(this.folderId).subscribe(
-        response => {
-          console.log("Réponse de la récupération du nom du dossier :", response);
-          this.folderName = response.folder.name; // Accéder à la propriété 'name' à l'intérieur de 'folder'
-        },
-        error => {
-          console.error("Erreur lors de la récupération du nom du dossier :", error);
-        }
-      );
-    }
-    this.searchSubject.pipe(takeUntil(this.unsubscribe$)).subscribe(() => {
-      this.getFecs();
-    });
-
-    // Fetch missions from the server on component initialization
-    this.getFecs();
-     
-    });
-  
+    ngOnInit() {
+      if (isPlatformBrowser(this.platformId)) {
+        this.authService.retrieveCurrentUserFromLocalStorage();
+        this.subscriptions.add(this.authService.currentUser$.subscribe(user => {
+          this.currentUser = user;
+          console.log("Current User ID:", this.currentUser?.userInfo._id);
+        }));
+    
+        this.route.paramMap.subscribe(params => {
+          this.folderId = params.get('id') || '';
+          console.log("folderId", this.folderId);
+          if (this.folderId) {
+            this.subscriptions.add(this.fecService.getFecName(this.folderId).subscribe(
+              response => {
+                console.log("Folder name response:", response);
+                this.folderName = response.folder.name;
+              },
+              error => {
+                console.error("Error retrieving folder name:", error);
+              }
+            ));
+          }
+          this.searchSubject.pipe(takeUntil(this.unsubscribe$)).subscribe(() => {
+            this.getFecs();
+          });
+          this.getFecs();
+        });
+      }
+    
+    
 
    
   
    
    // this.
   }
-  fetchComptableEntries(): void {
-    const codeDossier = '12345';
-    const filter = 'datePiece>2024-01-01 AND compteNumero:411';
+  // fetchComptableEntries(): void {
+  //   const codeDossier = '12345';
+  //   const filter = 'datePiece>2024-01-01 AND compteNumero:411';
 
-    this.knowledgeService.getComptableEntries(codeDossier, filter).subscribe({
-      next: (data) => {
-        this.entries = data;
-      },
-      error: (error) => {
-        this.errorMessage = 'Erreur lors de la récupération des écritures comptables';
-        console.error(error);
-      }
-    });
-  }
+  //   this.knowledgeService.getComptableEntries(codeDossier, filter).subscribe({
+  //     next: (data) => {
+  //       this.entries = data;
+  //     },
+  //     error: (error) => {
+  //       this.errorMessage = 'Erreur lors de la récupération des écritures comptables';
+  //       console.error(error);
+  //     }
+  //   });
+  // }
   ngOnDestroy() {
     this.subscriptions.unsubscribe();
     this.unsubscribe$.next();
@@ -254,7 +242,11 @@ console.log("upload fec avec succes");
       }
     });
     fileUploadDialog.click();
+    fileUploadDialog.onerror = (error) => {
+      console.error("Error opening file upload dialog:", error);
+    };
   }
+  
   getFecs(): void {
     this.fecService.getFecsd(this.currentUser?.userInfo._id!, this.folderId).subscribe(
       response => {

@@ -135,6 +135,26 @@ export class SettingsService {
     const payload = { columnIndex, newValue };
     return this.http.put(`${this.apiUrl}/synonymes/updattitldata`, payload);
   }
+  exportCSVFec(fecId: String | undefined) : void {
+    this.http.get(`${this.apiUrl}/mots/exportFec/${fecId}`, { responseType: 'blob' })
+      .subscribe(blob => {
+        const url = window.URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', 'exportedData.csv');
+        document.body.appendChild(link);
+        link.click();
+        const childNode = document.getElementById('childElement');
+const parentNode = childNode!.parentNode;
+
+console.log(parentNode); // Cela affichera l'élément parent dans la console
+
+        link.parentNode!.removeChild(link);
+        window.URL.revokeObjectURL(url);
+      }, error => {
+        console.error('Erreur lors de l\'exportation des données CSV:', error);
+      });
+  }
   exportCSV(): void {
     this.http.get(`${this.apiUrl}/mots/export`, { responseType: 'blob' })
       .subscribe(blob => {
@@ -155,4 +175,5 @@ console.log(parentNode); // Cela affichera l'élément parent dans la console
         console.error('Erreur lors de l\'exportation des données CSV:', error);
       });
   }
+
 }

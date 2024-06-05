@@ -61,6 +61,15 @@ export class ChatService {
       })
     );
   }
+  getFecId(conversationId: string): Observable<string> {
+    return this.http.get<{ fecId: string }>(`${this.apiUrl}/fec/getFecId/${conversationId}`).pipe(
+      map(response => response.fecId),
+      catchError(error => {
+        console.error("Erreur lors de la récupération de l'ID du FEC :", error);
+        return throwError("Erreur lors de la récupération de l'ID du FEC");
+      })
+    );
+  }
   getParaphrases(text: string): Observable<any>  {
     return this.http.post<any>(`${this.apiUrl}/conversation/paraphrases`, { text });
   }

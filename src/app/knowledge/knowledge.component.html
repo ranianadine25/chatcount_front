@@ -50,33 +50,7 @@
     </div>
     <!-- src/app/components/comptable/comptable.component.html -->
 <!-- src/app/components/comptable-list/comptable-list.component.html -->
-<div *ngIf="errorMessage">{{ errorMessage }}</div>
-<table *ngIf="entries.length">
-  <thead>
-    <tr>
-      <th>Journal ID</th>
-      <th>Journal Code</th>
-      <th>Journal Libellé</th>
-      <th>Date de la Pièce</th>
-      <th>Numéro de Compte</th>
-      <th>Libellé du Compte</th>
-      <th>Débit</th>
-      <th>Crédit</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let entry of entries">
-      <td>{{ entry.journalId }}</td>
-      <td>{{ entry.journalCode }}</td>
-      <td>{{ entry.journalLibelle }}</td>
-      <td>{{ entry.datePiece }}</td>
-      <td>{{ entry.compteNumero }}</td>
-      <td>{{ entry.compteLibelle }}</td>
-      <td>{{ entry.debit.amount }}</td>
-      <td>{{ entry.credit.amount }}</td>
-    </tr>
-  </tbody>
-</table>
+
 
     <div class="fec-list">
       <!-- Afficher la liste des FEC ici -->
