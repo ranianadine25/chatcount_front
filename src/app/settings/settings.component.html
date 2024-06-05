@@ -118,31 +118,36 @@
       
     </div>
     <div class="table-container" *ngIf="showSynonymes">
-
       <div class="add-column">
-        <button  type="button" class="btn btn-outline-primary" style="background-color: bisque;" id="import-fec-button"  (click)="openFileUploadDialog('synonymes')">
+        <button type="button" class="btn btn-outline-primary" style="background-color: bisque;" id="import-fec-button" (click)="openFileUploadDialog('synonymes')">
           <i class="fa fa-file-import"></i> Importer votre Fichier.csv
         </button>
-        <button (click)="exportData()" style="background-color: rgb(72, 100, 181);margin-left: 5px;">Exporter CSV</button>
+        <button (click)="exportData()" style="background-color: rgb(72, 100, 181); margin-left: 5px;">Exporter CSV</button>
         <div style="margin-top: 10px;">
-
-        <input  type="text" [(ngModel)]="newColumnName" placeholder="Nom de la colonne">
-        <button style="background-color: linear-gradient(to right, #9ccdf8, #030640);" (click)="addColumSynonymen()">Ajouter colonne</button>
-       </div>
+          <input type="text" [(ngModel)]="newColumnName" placeholder="Nom de la colonne">
+          <button style="background-color: linear-gradient(to right, #9ccdf8, #030640);" (click)="addColumSynonymen()">Ajouter colonne</button>
+        </div>
       </div>
-      
+    
       <table class="csv-table">
         <thead>
           <tr>
-            <th *ngFor="let column of synonymeData?.titre.split(';')">{{ column }}</th>
+            <th *ngFor="let column of synonymeData?.titre.split(';'); let i = index">
+              <div *ngIf="!isEditingTitle[i]; else editTitleMode" class="title-content">
+                <span>{{ column }}</span>
+                <span (click)="toggleTitleEdit(i)" class="edit-icon"><i class="fas fa-edit"></i></span>
+              </div>
+              <ng-template #editTitleMode>
+                <input type="text" [(ngModel)]="synonymeData.titreArray[i]" (blur)="updateTitleValue(i, $event)" />
+              </ng-template>
+            </th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let row of synonymeData?.contenu; let i = index">
             <td *ngFor="let cell of row.split(';'); let j = index">
-              <div *ngIf="!isEditing[i]?.[j]; else editMode" class="cell-content" >
-                <span style="margin-right: 10px;">{{ cell }} </span>
-
+              <div *ngIf="!isEditing[i]?.[j]; else editMode" class="cell-content">
+                <span style="margin-right: 10px;">{{ cell }}</span>
                 <span (click)="toggleEdit(i, j)" class="edit-icon"><i class="fas fa-edit"></i></span>
                 <div (click)="deleteSynonymeData(i, j)" class="delete-icon"><i class="fas fa-trash"></i></div>
               </div>
@@ -163,10 +168,8 @@
           </tr>
         </tbody>
       </table>
-      
-      
-      
     </div>
+    
   <div  *ngIf="showFECSettings"> <div class="card-container" >
     <div class="card-container">
       <div class="labels-row">

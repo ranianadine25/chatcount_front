@@ -20,6 +20,7 @@ export class SettingsComponent implements OnInit {
 
   patternsButtonColor: string = '#2541b200';
     labels: any[] = [];
+    isEditingTitle: boolean[] = [];
 
   thresholdToShow = 10;
   labelNumbers: number[] = [1, 2, 3, 4, 5]; 
@@ -93,11 +94,22 @@ synonymeData: any;
     this.settingsService.getSynonymeData()
       .subscribe(data => {
         this.synonymeData = data;
-        this.newRow = new Array(this.synonymeData?.titre.split(';').length).fill('');
-        this.initializeEditingArrayS();
-
+        this.synonymeData.titreArray = this.synonymeData?.titre.split(';');
+        this.newRow = new Array(this.synonymeData.titreArray.length).fill('');
+        this.initializeEditingArrays();
       });
   }
+  
+  initializeEditingArrays(): void {
+    // Initialisez le tableau isEditingTitle en fonction de la longueur de titreArray
+    this.isEditingTitle = new Array(this.synonymeData.titreArray.length).fill(false);
+  
+    // Initialisez le tableau isEditing pour les cellules
+    this.isEditing = this.synonymeData.contenu.map((row: { split: (arg0: string) => { (): any; new(): any; length: any; }; }) => 
+      new Array(row.split(';').length).fill(false)
+    );
+  }
+  
  
   initializeEditingArray(): void {
     this.isEditing = new Array(this.csvData?.contenu.length).fill(false).map(() => new Array(this.csvData?.titre.split(';').length).fill(false));
@@ -864,4 +876,38 @@ deletePatternData(rowIndex: number, columnIndex: number): void {
       }
     );
   }
+  toggleTitleEdit(index: number): void {
+    this.isEditingTitle[index] = !this.isEditingTitle[index];
+  }
+
+  // Méthode pour mettre à jour la valeur du titre de colonne
+  updateTitleValue(index: number, event: any): void {
+    const newValue = event?.target?.value ?? '';
+    this.synonymeData.titreArray[index] = newValue;
+    this.synonymeData.titre = this.synonymeData.titreArray.join(';');
+
+    // Appelez le service pour mettre à jour le titre dans le backend
+    this.settingsService.updateTitleData(index, newValue)
+      .subscribe(
+        response => {
+          console.log('Titre mis à jour avec succès :', response);
+          this._snackBar.open('Titre mis à jour avec succès.', 'Fermer', {
+            panelClass: ['redNoMatch'],
+            duration: 5000,
+            horizontalPosition: 'center',
+            verticalPosition: 'top'
+          });
+        },
+        error => {
+          console.error('Erreur lors de la mise à jour du titre :', error);
+          this._snackBar.open('Erreur lors de la mise à jour du titre.', 'Fermer', {
+            panelClass: ['redNoMatch'],
+            duration: 5000,
+            horizontalPosition: 'center',
+            verticalPosition: 'top'
+          });
+        }
+      );
+  }
+
 }

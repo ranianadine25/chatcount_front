@@ -131,6 +131,10 @@ export class SettingsService {
 
     return this.http.post<any>(`${this.apiUrl}/patterns/addPaterns`, body);
   }
+  updateTitleData(columnIndex: number, newValue: string): Observable<any> {
+    const payload = { columnIndex, newValue };
+    return this.http.put(`${this.apiUrl}/synonymes/updattitldata`, payload);
+  }
   exportCSV(): void {
     this.http.get(`${this.apiUrl}/mots/export`, { responseType: 'blob' })
       .subscribe(blob => {

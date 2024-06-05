@@ -101,7 +101,7 @@
 }
 .messages-wrapper {
   max-height: calc(100% - 100px); 
-  overflow-y: auto;
+  overflow-y: scroll;
   display: flex;
   flex-direction: column-reverse; 
 }
