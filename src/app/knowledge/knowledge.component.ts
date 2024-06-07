@@ -11,6 +11,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subject, Subscription, takeUntil } from 'rxjs';
+import { SettingsService } from '../settings/setting.service';
 
 interface ChatListResponse {
   userId: string;
@@ -39,6 +40,7 @@ export class KnowledgeComponent implements OnInit {
   errorMessage: string = '';
 
   constructor(
+    private settingsService: SettingsService,
     private route: ActivatedRoute,
     private _snackBar: MatSnackBar,
     private knowledgeService : knowledgeService,
@@ -277,6 +279,9 @@ console.log("upload fec avec succes");
 }
 editFec(fecId: string){
 
+}
+exportData(fecId : String): void {
+  this.settingsService.exportCSVFec(fecId);
 }
 deleteFec(fecId: string){
   this.subscriptions.add(

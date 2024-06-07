@@ -75,7 +75,7 @@
         <button  type="button" class="btn btn-outline-primary" style="background-color: bisque;" id="import-fec-button" (click)="openFileUploadDialog2()">
           <i class="fa fa-file-import"></i> Importer votre Fichier.csv
         </button>
-        <button (click)="exportData()" style="background-color: rgb(72, 100, 181);margin-left: 5px;" >Exporter CSV</button>
+        <button (click)="exportDataPattern()" style="background-color: rgb(72, 100, 181);margin-left: 5px;" >Exporter CSV</button>
 
        
       </div>
@@ -122,7 +122,7 @@
         <button type="button" class="btn btn-outline-primary" style="background-color: bisque;" id="import-fec-button" (click)="openFileUploadDialog('synonymes')">
           <i class="fa fa-file-import"></i> Importer votre Fichier.csv
         </button>
-        <button (click)="exportData()" style="background-color: rgb(72, 100, 181); margin-left: 5px;">Exporter CSV</button>
+        <button (click)="exportDataSynonym()" style="background-color: rgb(72, 100, 181); margin-left: 5px;">Exporter CSV</button>
         <div style="margin-top: 10px;">
           <input type="text" [(ngModel)]="newColumnName" placeholder="Nom de la colonne">
           <button style="background-color: linear-gradient(to right, #9ccdf8, #030640);" (click)="addColumSynonymen()">Ajouter colonne</button>

@@ -82,7 +82,7 @@ export class NewchatComponent {
     this.dialogRef.close(false);
   }
   getFecs(): void {
-    this.fecService.getFecs(this.currentUser?.userInfo._id!).subscribe(
+    this.fecService.getFecsTrait(this.currentUser?.userInfo._id!).subscribe(
       response => {
         this.fecs = response.data;
         this.cdr.detectChanges(); 

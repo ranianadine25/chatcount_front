@@ -102,7 +102,7 @@ export class ChatComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       this.conversationId = params.get('id') || '';
       this.chatService.initSocketListeners(this.conversationId);
-this.getParaphrases();
+//this.getParaphrases();
      
     if (this.conversationId) {
       this.conversationExists = true; 

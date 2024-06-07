@@ -752,6 +752,12 @@ deletePatternData(rowIndex: number, columnIndex: number): void {
   exportData(): void {
     this.settingsService.exportCSV();
   }
+  exportDataPattern(): void {
+    this.settingsService.exportPatterns();
+  }
+  exportDataSynonym(): void {
+    this.settingsService.exportSynonymes();
+  }
   openFileUploadDialog2() {
     const fileUploadDialog = document.createElement("input");
     fileUploadDialog.type = "file";

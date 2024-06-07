@@ -112,8 +112,14 @@
     <div class="row message-input-row">
       <div class="input-center">
         <div class="input-group">
-          <!-- Suppression de la div contenant les suggestions de paraphrase -->
-          <input [(ngModel)]="value" (keyup.enter)="sendMessage()" type="text" class="form-control" placeholder="Entrez votre message..." aria-label="Message" aria-describedby="button-addon2">
+          <div class="input-suggestions" *ngIf="showParaphrases">
+            <ul class="paraphrase-list">
+              <li *ngFor="let paraphrase of paraphrases" class="paraphrase-item" (click)="selectParaphrase(paraphrase)">
+                <span>{{ paraphrase.paraphrase }}</span>
+              </li>
+            </ul>
+          </div>
+          <input [(ngModel)]="value" (ngModelChange)="getParaphrases()" (keyup.enter)="sendMessage()" type="text" class="form-control" placeholder="Entrez votre message..." aria-label="Message" aria-describedby="button-addon2">
           <div class="input-group-append">
             <button (click)="startRecording()" class="btn btn-outline-primary-icon" type="button">
               <i class="fa fa-microphone"></i> 
@@ -123,7 +129,6 @@
         </div>
       </div>
     </div>
-    
     
    
     

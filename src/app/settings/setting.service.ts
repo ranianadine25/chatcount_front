@@ -175,5 +175,44 @@ console.log(parentNode); // Cela affichera l'élément parent dans la console
         console.error('Erreur lors de l\'exportation des données CSV:', error);
       });
   }
+  exportPatterns(): void {
+    this.http.get(`${this.apiUrl}/patterns/export`, { responseType: 'blob' })
+      .subscribe(blob => {
+        const url = window.URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', 'exportedData.csv');
+        document.body.appendChild(link);
+        link.click();
+        const childNode = document.getElementById('childElement');
+const parentNode = childNode!.parentNode;
 
+console.log(parentNode); // Cela affichera l'élément parent dans la console
+
+        link.parentNode!.removeChild(link);
+        window.URL.revokeObjectURL(url);
+      }, error => {
+        console.error('Erreur lors de l\'exportation des données CSV:', error);
+      });
+  }
+  exportSynonymes(): void {
+    this.http.get(`${this.apiUrl}/synonymes/export`, { responseType: 'blob' })
+      .subscribe(blob => {
+        const url = window.URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', 'exportedData.csv');
+        document.body.appendChild(link);
+        link.click();
+        const childNode = document.getElementById('childElement');
+const parentNode = childNode!.parentNode;
+
+console.log(parentNode); // Cela affichera l'élément parent dans la console
+
+        link.parentNode!.removeChild(link);
+        window.URL.revokeObjectURL(url);
+      }, error => {
+        console.error('Erreur lors de l\'exportation des données CSV:', error);
+      });
+  }
 }

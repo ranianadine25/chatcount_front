@@ -18,6 +18,10 @@ export class FecService {
   getFecs(userId: string | null): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/fec/getCsv/${userId}`);
   }
+  getFecsTrait(userId: string | null): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/fec/getFecTrait/${userId}`);
+  }
+  
   
   uploadFile(file: File, userId: string | null): Observable<UploadResponse> {
     const formData = new FormData();
