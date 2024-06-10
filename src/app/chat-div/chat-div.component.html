@@ -18,7 +18,6 @@
     <div class="switch-button-text">Partagées</div>
   </div>
 </div>
-
 <div class="conversation-list" #conversationList>
   <div *ngFor="let conversation of selectedConversations" class="conversation-item">
     <h2 class="conversation-name">
@@ -37,10 +36,13 @@
           <li (click)="getInviteUsers(conversation._id)">
             <i class="fas fa-user-plus" style="margin-right: 8px; color: #030640;"></i> Inviter 
           </li>
+          <li (click)="startRenaming(conversation)">
+            <i class="fas fa-edit" style="margin-right: 8px; color: #030640;"></i> Renommer 
+          </li>
         </ul>
       </div>
     </h2>
-  
   </div>
 </div>
+
 </div>

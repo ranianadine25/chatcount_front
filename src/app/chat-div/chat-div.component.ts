@@ -1,4 +1,4 @@
-import { Component, OnInit, PLATFORM_ID, Inject, ViewChild, ElementRef, NgModule, HostListener } from '@angular/core';
+import { Component, OnInit, PLATFORM_ID, Inject, ViewChild, ElementRef, NgModule, HostListener, ChangeDetectorRef } from '@angular/core';
 import { NgbDropdown, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
@@ -32,6 +32,8 @@ export class ChatDivComponent implements OnInit {
   @ViewChild('dropdown') dropdown: NgbDropdown | undefined;
 
   constructor(
+    private cdr: ChangeDetectorRef,
+
     private conversationService: ChatService,
     private alertServ: AlertHandlerService,
     private modal: NgbModal,
@@ -192,6 +194,7 @@ export class ChatDivComponent implements OnInit {
 
   startRenaming(conversation: any): void {
     conversation.isRenaming = true;
+    conversation.newName = conversation.name; 
     conversation.showDropdown = false; // Cacher le menu déroulant lors du renommage
   }
   
@@ -199,8 +202,13 @@ export class ChatDivComponent implements OnInit {
     this.conversationService.renameConversation(conversation._id, conversation.newName).subscribe(
       () => {
         conversation.isRenaming = false;
+        conversation.name = conversation.newName;
+
         conversation.showDropdown = false; // Cacher le menu déroulant après le renommage
+        this.cdr.detectChanges(); 
+
         console.log('Conversation renommée avec succès');
+      
       },
       error => {
         console.error('Erreur lors du renommage de la conversation :', error);
