@@ -308,6 +308,7 @@ lancerTraitementFEC(fecId: string) {
         horizontalPosition: 'center',
         verticalPosition: 'top'
       });
+      location.reload();
     },
     error => {
       console.error('Erreur lors du traitement du FEC :', error);

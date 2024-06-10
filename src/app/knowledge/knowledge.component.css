@@ -201,3 +201,9 @@ select.custom-select {
   right: 0 !important;
   left: auto !important;
 }
+@media (max-width: 576px) {
+  .dropdown-menu {
+    left: auto;
+    right: 0;
+  }
+}

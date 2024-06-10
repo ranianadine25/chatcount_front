@@ -84,13 +84,13 @@
             <ng-container *ngFor="let fec of fecs">
               <tr>
                 <td class="font-weight-bold">{{ fec.name }}</td>
-               
-                <td class="font-weight-bold">{{ fec.createdAt | date: 'dd/MM/yyyy à HH:mm'  }}</td>
-                <td class="font-weight-bold">{{ fec.updatedAt | date: 'dd/MM/yyyy à HH:mm'  }}</td>
-                <td class="custom-badge" style="border-radius: 20px; text-align: center;"  [ngClass]="getColor(fec.etat)">{{ fec.etat }}</td>
-
+                <td class="font-weight-bold">{{ fec.createdAt | date: 'dd/MM/yyyy à HH:mm' }}</td>
+                <td class="font-weight-bold">{{ fec.updatedAt | date: 'dd/MM/yyyy à HH:mm' }}</td>
+                <td class="custom-badge" style="border-radius: 20px; text-align: center;" [ngClass]="getColor(fec.etat)">
+                  {{ fec.etat }}
+                </td>
                 <td class="pl-3 d-flex">
-                  <div ngbDropdown class="dropdown" >
+                  <div ngbDropdown class="dropdown">
                     <button class="btn btn-outline-primary" id="dropdownBrowserState" ngbDropdownToggle>
                       <i class="feather icon-more-vertical"></i>
                     </button>
@@ -102,14 +102,11 @@
                         <i class="feather icon-trash-2"></i> Supprimer
                       </button>
                       <button class="dropdown-item" (click)="exportData(fec._id)">
-                        <i class="feather icon-trash-2"></i> Exporter
+                        <i class="feather icon-download"></i> Exporter
                       </button>
                     </div>
                   </div>
-                  
                 </td>
-                
-        
               </tr>
             </ng-container>
             <tr *ngIf="fecs?.length == 0">

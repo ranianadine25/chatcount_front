@@ -206,6 +206,7 @@ deleteSynonymeData(rowIndex: number, columnIndex: number): void {
             horizontalPosition: 'center',
             verticalPosition: 'top'
           });
+          alert("Cellule supprimée avec succès");
         } else {
           console.log('Réponse de suppression invalide:', response);
         }
@@ -585,6 +586,8 @@ deletePatternData(rowIndex: number, columnIndex: number): void {
             this.settingsService.uploadCsvFile(file.name).subscribe(
               (response: any) => {
                 console.log("CSV data imported successfully:", response);
+                alert("Vous avez importé votre fichier avec succès.");
+
               },
               (error: any) => {
                 console.error("Error importing CSV data:", error);
@@ -620,6 +623,8 @@ deletePatternData(rowIndex: number, columnIndex: number): void {
               horizontalPosition: 'center',
               verticalPosition: 'top'
             });
+            alert("Vous avez importé votre fichier avec succès.");
+
             this.settingsService.uploadCsvFile(file.name).subscribe(
               (response: any) => {
                 console.log("CSV data imported successfully:", response);
@@ -636,6 +641,8 @@ deletePatternData(rowIndex: number, columnIndex: number): void {
               horizontalPosition: 'center',
               verticalPosition: 'top'
             });
+            alert("Vous avez importé votre fichier avec succès.");
+
             this.settingsService.uploadCsvFile(file.name).subscribe(
               (response: any) => {
                 console.log("CSV data imported successfully:", response);
@@ -662,6 +669,8 @@ deletePatternData(rowIndex: number, columnIndex: number): void {
             this.settingsService.uploadSynonymeFile(file.name).subscribe(
               (response: any) => {
                 console.log("Synonymes imported successfully:", response);
+                alert("Vous avez importé votre fichier avec succès.");
+
               },
               (error: any) => {
                 console.error("Error importing synonymes:", error);
@@ -675,6 +684,8 @@ deletePatternData(rowIndex: number, columnIndex: number): void {
               this.settingsService.uploadSynonymeFile(file.name).subscribe(
                 (response: any) => {
                   console.log("Synonymes imported successfully:", response);
+                  alert("Vous avez importé votre fichier avec succès.");
+
                 },
                 (error: any) => {
                   console.error("Error importing synonymes:", error);
@@ -697,6 +708,8 @@ deletePatternData(rowIndex: number, columnIndex: number): void {
               horizontalPosition: 'center',
               verticalPosition: 'top'
             });
+            alert("Vous avez importé votre fichier avec succès.");
+
             this.settingsService.uploadSynonymeFile(file.name).subscribe(
               (response: any) => {
                 console.log("Synonymes imported successfully:", response);
@@ -716,6 +729,8 @@ deletePatternData(rowIndex: number, columnIndex: number): void {
             this.settingsService.uploadSynonymeFile(file.name).subscribe(
               (response: any) => {
                 console.log("Synonymes imported successfully:", response);
+                alert("Vous avez importé votre fichier avec succès.");
+
               },
               (error: any) => {
                 console.error("Error importing synonymes:", error);
