@@ -206,7 +206,7 @@ deleteSynonymeData(rowIndex: number, columnIndex: number): void {
             horizontalPosition: 'center',
             verticalPosition: 'top'
           });
-          alert("Cellule supprimée avec succès");
+          alert("Cellule supprimée avec succès.Merci d'actualiser la page!");
         } else {
           console.log('Réponse de suppression invalide:', response);
         }
@@ -586,7 +586,7 @@ deletePatternData(rowIndex: number, columnIndex: number): void {
             this.settingsService.uploadCsvFile(file.name).subscribe(
               (response: any) => {
                 console.log("CSV data imported successfully:", response);
-                alert("Vous avez importé votre fichier avec succès.");
+                alert("Vous avez importé votre fichier avec succès.Merci d'actualiser la page!");
 
               },
               (error: any) => {
@@ -623,7 +623,7 @@ deletePatternData(rowIndex: number, columnIndex: number): void {
               horizontalPosition: 'center',
               verticalPosition: 'top'
             });
-            alert("Vous avez importé votre fichier avec succès.");
+            alert("Vous avez importé votre fichier avec succès.Merci d'actualiser la page!");
 
             this.settingsService.uploadCsvFile(file.name).subscribe(
               (response: any) => {
@@ -641,7 +641,7 @@ deletePatternData(rowIndex: number, columnIndex: number): void {
               horizontalPosition: 'center',
               verticalPosition: 'top'
             });
-            alert("Vous avez importé votre fichier avec succès.");
+            alert("Vous avez importé votre fichier avec succès.Merci d'actualiser la page!");
 
             this.settingsService.uploadCsvFile(file.name).subscribe(
               (response: any) => {
@@ -669,7 +669,7 @@ deletePatternData(rowIndex: number, columnIndex: number): void {
             this.settingsService.uploadSynonymeFile(file.name).subscribe(
               (response: any) => {
                 console.log("Synonymes imported successfully:", response);
-                alert("Vous avez importé votre fichier avec succès.");
+                alert("Vous avez importé votre fichier avec succès.Merci d'actualiser la page!");
 
               },
               (error: any) => {
@@ -684,7 +684,7 @@ deletePatternData(rowIndex: number, columnIndex: number): void {
               this.settingsService.uploadSynonymeFile(file.name).subscribe(
                 (response: any) => {
                   console.log("Synonymes imported successfully:", response);
-                  alert("Vous avez importé votre fichier avec succès.");
+                  alert("Vous avez importé votre fichier avec succès.Merci d'actualiser la page!");
 
                 },
                 (error: any) => {
@@ -729,7 +729,7 @@ deletePatternData(rowIndex: number, columnIndex: number): void {
             this.settingsService.uploadSynonymeFile(file.name).subscribe(
               (response: any) => {
                 console.log("Synonymes imported successfully:", response);
-                alert("Vous avez importé votre fichier avec succès.");
+                alert("Vous avez importé votre fichier avec succès.Merci d'actualiser la page!");
 
               },
               (error: any) => {
@@ -792,7 +792,7 @@ deletePatternData(rowIndex: number, columnIndex: number): void {
   }
   handleFileUpload2(file: File) {
     if (file.name !== "questions.csv") {
-      alert("Le fichier importé doit avoir le nom questions.csv.");
+      alert("Le fichier importé doit avoir le nom questions.csv.Merci d'actualiser la page!");
       return; 
     }
   

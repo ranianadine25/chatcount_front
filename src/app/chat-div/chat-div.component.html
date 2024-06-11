@@ -8,41 +8,40 @@
 
   <h2 class="font-circular-std-black-20" style="margin-bottom: 6px; margin-top:10px; margin-left: 6px;">Discussions récentes</h2>
 
-  <!-- Switch pour les types de conversations -->
-<!-- Switch pour les types de conversations -->
-<div class="conversation-switch">
-  <div class="switch-button" [class.active]="showOwnerConversations" (click)="toggleConversationType(true)">
-    <div class="switch-button-text">Personnelles</div>
+  <div class="conversation-switch">
+    <div class="switch-button" [class.active]="showOwnerConversations" (click)="toggleConversationType(true)">
+      <div class="switch-button-text">Personnelles</div>
+    </div>
+    <div class="switch-button" [class.active]="showSharedConversations" (click)="toggleConversationType(false)">
+      <div class="switch-button-text">Partagées</div>
+    </div>
   </div>
-  <div class="switch-button" [class.active]="showSharedConversations" (click)="toggleConversationType(false)">
-    <div class="switch-button-text">Partagées</div>
-  </div>
-</div>
-<div class="conversation-list" #conversationList>
-  <div *ngFor="let conversation of selectedConversations" class="conversation-item">
-    <h2 class="conversation-name">
-      <i class="fas fa-comment-alt" style="margin-right: 4px;"></i>
-      <span *ngIf="!conversation.isRenaming" (click)="loadConversationHistory(conversation._id)">
-        {{ getFirstMessageText(conversation) }}
-      </span>
-      <input *ngIf="conversation.isRenaming" type="text" [(ngModel)]="conversation.newName" 
-             (keydown.enter)="renameConversation(conversation)" (blur)="cancelRenaming(conversation)">
-      <i class="fas fa-ellipsis-v" style="margin-left: 20px;" (click)="toggleDropdown(conversation)"></i>
-      <div *ngIf="conversation.showDropdown" class="dropdown-menu" (click)="stopPropagation($event)" style="border-top: none;">
-        <ul>
-          <li (click)="onDeleteConversation(conversation._id)">
-            <i class="fas fa-trash-alt" style="margin-right: 8px; color: #030640;"></i> Supprimer
-          </li>
-          <li (click)="getInviteUsers(conversation._id)">
-            <i class="fas fa-user-plus" style="margin-right: 8px; color: #030640;"></i> Inviter 
-          </li>
-          <li (click)="startRenaming(conversation)">
-            <i class="fas fa-edit" style="margin-right: 8px; color: #030640;"></i> Renommer 
-          </li>
-        </ul>
-      </div>
-    </h2>
-  </div>
-</div>
 
+  <div class="conversation-list" #conversationList>
+    <div *ngFor="let conversation of selectedConversations" class="conversation-item">
+      <h2 class="conversation-name">
+        <i class="fas fa-comment-alt" style="margin-right: 4px;"></i>
+        <!-- Priorité au renommage -->
+        <input *ngIf="conversation.isRenaming" type="text" [(ngModel)]="conversation.newName" 
+               (keydown.enter)="renameConversation(conversation)" (blur)="cancelRenaming(conversation)" [attr.data-id]="conversation._id" autofocus>
+        <span *ngIf="!conversation.isRenaming" (click)="loadConversationHistory(conversation._id)">
+          {{ conversation.name ? conversation.name : getFirstMessageText(conversation) }}
+        </span>
+        <i class="fas fa-ellipsis-v" style="margin-left: 20px;" (click)="toggleDropdown(conversation)"></i>
+        <div *ngIf="conversation.showDropdown" class="dropdown-menu" (click)="stopPropagation($event)" style="border-top: none;">
+          <ul>
+            <li (click)="onDeleteConversation(conversation._id)">
+              <i class="fas fa-trash-alt" style="margin-right: 8px; color: #030640;"></i> Supprimer
+            </li>
+            <li (click)="getInviteUsers(conversation._id)">
+              <i class="fas fa-user-plus" style="margin-right: 8px; color: #030640;"></i> Inviter 
+            </li>
+            <li (click)="startRenaming(conversation)">
+              <i class="fas fa-edit" style="margin-right: 8px; color: #030640;"></i> Renommer 
+            </li>
+          </ul>
+        </div>
+      </h2>
+    </div>
+  </div>
 </div>

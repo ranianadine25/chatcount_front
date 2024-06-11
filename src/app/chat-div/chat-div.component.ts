@@ -194,27 +194,35 @@ export class ChatDivComponent implements OnInit {
 
   startRenaming(conversation: any): void {
     conversation.isRenaming = true;
-    conversation.newName = conversation.name; 
-    conversation.showDropdown = false; // Cacher le menu déroulant lors du renommage
+    conversation.newName = conversation.name; // Pré-remplir avec le nom actuel
+    setTimeout(() => {
+      const input = document.querySelector(`input[ng-reflect-model="${conversation.newName}"]`) as HTMLInputElement;
+      if (input) {
+        input.focus();
+      }
+    });
   }
   
   renameConversation(conversation: any): void {
+    if (!conversation.newName || conversation.newName.trim() === '') {
+      console.error('Le nouveau nom de la conversation ne peut pas être vide');
+      return;
+    }
+
     this.conversationService.renameConversation(conversation._id, conversation.newName).subscribe(
       () => {
-        conversation.isRenaming = false;
         conversation.name = conversation.newName;
-
+        conversation.isRenaming = false;
         conversation.showDropdown = false; // Cacher le menu déroulant après le renommage
-        this.cdr.detectChanges(); 
-
         console.log('Conversation renommée avec succès');
-      
+        this.cdr.detectChanges();
       },
       error => {
         console.error('Erreur lors du renommage de la conversation :', error);
       }
     );
   }
+
   getFirstMessageText(conversation: Conversation): string {
     if (conversation.messages.length > 0) {
       const firstMessage = typeof conversation.messages[0].text === 'string' ? conversation.messages[0].text : '';
