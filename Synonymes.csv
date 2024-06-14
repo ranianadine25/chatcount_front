@@ -1,0 +1,22 @@
+Decaissements;Encaissement;banque;Ventes;MASSE SALARIALE;URSSAF;Investissements;Travaux;Fournitures non stockables;Dettes;Associes Comptes courants;Salaires;Tresorerie;Securite sociale;Frais de recherche et de developpement;Charges financieres;Produits financiers;Dotation aux amortissements;Impots;Excedent brut d'exploitation;Capacite d'autofinancement;Especes;Locations
+Paiement;Encaisse;banque;Vente;Salaires;Securite sociale;Immobilisations;Amenagements;energie;dette;Compte courant;Revenus;Treso;Secu;Frais de R & D;Charges fin;Produits fin;DA;Taxes;EBE;CAF;Liquidites;Loyer
+Paiements;Encaissements;BQ;Chiffre d'affaires;Charges de personnel;urssaf;Investis;agencements;eau;dois;Cpte cour;SALAIRES;TRESORERIE;SECURITE SOCIALE;FRAIS DE RECHERCHE ET DE DEVELOPPEMENT;CHARGES FIN;produits fin;DOTATION AUX AMORTISSEMENTS;IMPOTS;ebe;caf;ESPECES;LOCATION
+DECAISSEMENTS;ENCAISSE;Bq;Honoraires;SALAIRE;secu;Investi;TRAVAUX;electricite;DETTE;COMPTE COURANT;REVENUS;TRESO;SECU;FRAIS DE R & D;CHARGES FINANCIERES;produits financiers;dotation aux amortissements;IMP;EXCEDENT BRUT D'EXPLOITATION;CAPACITE D'AUTOFINANCEMENT;ESPECE;LOYER
+Decaissements;ENCAISSEMENTS;BANQUE;Honoraire;SALAIRES;SECU;Immos;AGENCEMENTS;edf;DETES;compte courant;SAL;treso;;frais de r & d;charges fin;Prod fin;da;TAXES;excedent brut d'exploitation;;LIQUIDITES;LOY
+decaissement;encaissements;Banque;Prestations;salaires;secu soc;Immobilisations incorporelles ;amenagements;gaz;DOIS;associes comptes courants;REV;tresorerie;;;charges financieres;Prod financiers;;impots;;;especes;loy
+PAIEMENT;encaissement;;CA;salaire;SECU SOC;Immobilisations corporelles;Agencements;consommation electrique;Dette;ASSOCIES COMPTES COURANTS;sal;;;;charge fin;Produit financier;;impot;;;espece;locations
+PAIEMENTS;Encaissement;;Ca;charges de personnel;;Immos incorpo;;consommation de gaz;Dois;;rev;;;;charge financiere;Produit fin;;taxes;;;liquidite;LOCATIONS
+decaissements;;;ca;charge de personnel;;IMMOBILISATIONS;;fournitures non stockables;;;;;;;;PRODUITS FINANCIERS;;taxe;;;;
+DECAISSE;;;ventes;sal;;INVESTISSEMENTS;;FOURNITURES NON STOCKABLES;;;;;;;;PRODUITS FIN;;TVA;;;;
+Decaisse;;;vente;SAL;;INVESTIS;;ENERGIE;;;;;;;;PROD FINANCIERS;;tva;;;;
+decaisse;;;CHIFFRE D'AFFAIRES;Personnel remuneration due;;INVESTI;;Energie;;;;;;;;PRODUIT FINANCIER;;;;;;
+;;;chiffre d'affaires;Personnels remunerations dues;;INV;;EAU;;;;;;;;PRODUIT FIN;;;;;;
+;;;VENTE;personnel remuneration due;;IMMOS;;Eau;;;;;;;;;;;;;;
+;;;VENTES;personnels remunerations dues;;IMMOBILISATIONS INCORPORELLES;;ELECTRICITE;;;;;;;;;;;;;;
+;;;;;;IMMOBILISATIONS CORPORELLES;;Electricite;;;;;;;;;;;;;;
+;;;;;;IMMOS INCORPO;;EDF;;;;;;;;;;;;;;
+;;;;;;IMMOS CORPO;;GAZ;;;;;;;;;;;;;;
+;;;;;;;;Gaz;;;;;;;;;;;;;;
+;;;;;;;;elec;;;;;;;;;;;;;;
+;;;;;;;;ELEC;;;;;;;;;;;;;;
+;;;;;;;;Elec;;;;;;;;;;;;;;

@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://chatcount-backend.onrender.com'
+  apiUrl: 'http://94.23.10.6:7001'
 };
