@@ -1,13 +1,13 @@
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { BehaviorSubject, Observable, Subject, catchError, throwError } from 'rxjs';
 import io from 'socket.io-client';
-import { environment } from '../environment/environment';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { AlertHandlerService } from '../SharedModule/alert_handler.service';
 import { Conversation } from '../chat-div/conersation-model';
 import { User } from '../authetification/login/model_user';
 import { AuthService } from '../authetification/auth.service';
 import { map } from 'rxjs/operators'; // Importez les opérateurs map et catchError
+import { environment } from '../environment/environment.prod';
 interface MonthData {
   month: string;
   revenue: string;

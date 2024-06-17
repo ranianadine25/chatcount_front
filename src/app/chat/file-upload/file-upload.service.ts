@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { environment } from '../../environment/environment';
 import { Observable, catchError, map, throwError } from 'rxjs';
+import { environment } from '../../environment/environment.prod';
 interface UploadResponse {
   status: number; // Add status property
   message?: string; // Optional message property
