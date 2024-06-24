@@ -14,6 +14,7 @@ import { DocumentDivComponent } from '../knowledge/document-div/document-div.com
 import { AddFolderModalComponent } from '../knowledge/add-folder-modal/add-folder-modal.component';
 import { NavbarNotifComponent } from '../navbar/navbar-notif/navbar-notif.component';
 import { InviteUsersComponent } from '../chat-div/invite-users/invite-users.component';
+import { HelpSidebarComponent } from '../navbar/help-sidebar/help-sidebar.component';
 
 
 
@@ -91,7 +92,16 @@ const mainroutes: Routes = [
                 page: 'settings',
               }
             },
-        }
+        },
+        {
+          path: 'article/:section',
+          loadChildren: () => import('../article-complet/article-complet.module').then(m => m.ArticleManagementModule),
+          data: {
+            role: {
+              page: 'article',
+            }
+          },
+        },
     ]
   }
     
@@ -107,7 +117,8 @@ const mainroutes: Routes = [
         NavbarComponent,
         DocumentDivComponent,
         AddFolderModalComponent,
-        NavbarNotifComponent
+        NavbarNotifComponent,
+        HelpSidebarComponent
        
     ],
     imports: [

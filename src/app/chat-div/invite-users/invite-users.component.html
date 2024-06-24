@@ -1,10 +1,15 @@
 <div class="invite-users">
+  <div class="close-button" style="cursor: pointer;" (click)="closePopup()">
+    <img src="./assets/circle.svg" alt="Close button">
+  </div>
   <h3>Inviter des utilisateurs</h3>
   <ul>
     <li *ngFor="let user of users">
       <label>
         <input type="checkbox" [value]="user._id" (change)="toggleUserSelection(user._id)">
-        {{ user.name }}
+        <img [src]="user.avatar" alt="{{ user.name }}" class="avatar">
+        <span>{{ user.name }}</span>
+        <span>{{ user.email }}</span>
       </label>
     </li>
   </ul>

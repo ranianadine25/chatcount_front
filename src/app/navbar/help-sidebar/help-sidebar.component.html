@@ -1,0 +1,95 @@
+<div id="helpSidebar" class="sidebar" [ngClass]="{'show': dropdownVisible}" (click)="toggleDropdown($event)">
+  <div class="help-header">
+    <i (click)="returnAll()" class="fas fa-arrow-left"></i> 
+    <h2>Bonjour <span>👋</span></h2>
+    <h3>Comment pouvons-nous vous aider ?</h3>
+    <input type="text" id="searchInput" class="form-control" placeholder="Rechercher de l'aide" [(ngModel)]="searchQuery" (input)="filterCollections()">
+  </div>
+  <div class="help-collections" *ngIf="!selectedSection">
+    <h5>Collections</h5>
+    <div class="list-group">
+      <a class="list-group-item" *ngFor="let collection of filteredCollections" (click)="seeAll(collection.id)">
+        {{ collection.name }}
+      </a>
+    </div>
+  </div>
+  <div class="help-content" *ngIf="selectedSection">
+    <button class="back-button" (click)="selectedSection = null">Retour</button>
+
+    <div *ngIf="selectedSection === 'introduction'">
+      <h2>Bienvenue sur ChatCount</h2>
+      <p>Bienvenue sur ChatCount, votre assistant d'affaires intelligent. Ce guide vous aidera à vous familiariser avec les fonctionnalités de ChatCount et à comprendre comment l'utiliser pour obtenir des informations précises et des insights pertinents.</p>
+      <h3>Sections principales de l'application ChatCount:</h3>
+      <h4>1. Section Chat:</h4>
+      <ul>
+        <li>Interface de chat permettant de sélectionner un dossier et d'interagir avec le bot.</li>
+        <li>Poser des questions en langage naturel pour obtenir des informations et des insights.</li>
+        <li>Interagir avec le bot pour effectuer des actions spécifiques, comme la recherche de documents ou la création de rapports.</li>
+      </ul>
+      <h4>2. Section Documents:</h4>
+      <ul>
+        <li>Gérer les dossiers et les fichiers FEC.</li>
+        <li>Importer des fichiers FEC ou se connecter à un logiciel comptable.</li>
+        <li>Lancer le traitement des FEC et consulter les résultats.</li>
+      </ul>
+      <button (click)="seeAll('introduction')" class="see-all-button">Voir tout</button>
+    </div>
+
+    <div *ngIf="selectedSection === 'chat'">
+      <h2>Section Chat</h2>
+      <p>Le chat est l'interface principale de ChatCount où vous pouvez interagir avec le bot pour obtenir des informations et effectuer diverses actions.</p>
+      <h3>Fonctionnalités principales :</h3>
+      <ul>
+        <li>Interface de chat permettant de sélectionner un dossier et d'interagir avec le bot.</li>
+        <li>Poser des questions en langage naturel pour obtenir des informations et des insights.</li>
+        <li>Interagir avec le bot pour effectuer des actions spécifiques, comme la recherche de documents ou la création de rapports.</li>
+        <li>Recevoir des suggestions de questions pour faciliter l'interaction.</li>
+        <li>Consulter l'historique des discussions pour voir les interactions passées.</li>
+      </ul>
+      <p>Note : Le bot peut parfois prendre un peu de temps pour répondre, veuillez patienter.</p>
+      <button (click)="seeAll('chat')" class="see-all-button">Voir tout</button>
+    </div>
+    <div *ngIf="selectedSection === 'documents'">
+      <h2>Section Documents</h2>
+      <p>Bienvenue dans la section Documents de ChatCount. Cette section vous permet de gérer efficacement vos dossiers et fichiers FEC. Voici un guide pour vous aider à comprendre comment créer, importer, gérer et traiter vos fichiers FEC.</p>
+      
+   
+      <img src="assets/con1.png" alt="Actions sur les FECs" class="example-image" height="55" width="55" >
+      
+      <button (click)="seeAll('documents')" class="see-all-button">Voir tout</button>
+    </div>
+    <div *ngIf="selectedSection === 'settings'">
+      <h2>Section Paramétrages</h2>
+      <p>Bienvenue dans la section Paramétrages de ChatCount. Cette section vous permet de configurer divers aspects de votre application pour optimiser son fonctionnement. Voici un guide détaillé pour vous aider à comprendre les différents paramètres disponibles.</p>
+      
+   
+      <img src="assets/par1.png" alt="Actions sur les FECs" class="example-image" height="55" width="55" >
+      
+      <button (click)="seeAll('settings')" class="see-all-button">Voir tout</button>
+    </div>
+    <div *ngIf="selectedSection === 'profil'">
+      <h2>Section Profil</h2>
+      <p>Bienvenue dans la section Profil de ChatCount. Cette section vous permet de gérer vos informations personnelles, de modifier votre photo de profil, et d'inviter d'autres utilisateurs à rejoindre ChatCount. Voici un guide pour vous aider à comprendre comment utiliser ces fonctionnalités.</p>
+      
+   
+      <img src="assets/pro3.png" alt="Actions sur les FECs" class="example-image" height="55" width="55" >
+      
+      <button (click)="seeAll('profil')" class="see-all-button">Voir tout</button>
+    </div>
+    <!-- Ajoutez d'autres sections dynamiques ici -->
+  </div>
+  
+  <div class="footer">
+    <div class="nav-item">
+      <a class="nav-link active" href="#">
+        <i class="fas fa-home"></i> Accueil
+      </a>
+      <a class="nav-link" href="#">
+        <i class="fas fa-envelope"></i> Messages
+      </a>
+      <a class="nav-link" href="#">
+        <i class="fas fa-question-circle"></i> Aide
+      </a>
+    </div>
+  </div>
+</div>

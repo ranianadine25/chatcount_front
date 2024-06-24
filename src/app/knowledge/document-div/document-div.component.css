@@ -89,4 +89,10 @@
     .dropdown-menu ul li:hover {
       background-color: hsla(0, 0%, 80%, 0.707);
     }
-    
+    .pad{
+      
+      width: 100%;
+      justify-content: center;
+
+align-items: center;
+display: flex;    }

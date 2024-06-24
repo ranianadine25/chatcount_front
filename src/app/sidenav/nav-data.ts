@@ -14,7 +14,7 @@ export const navbarData = [
 {
     routeLink: 'settings',
     icon: 'fal fa-cog',
-    label: 'Settings'
+    label: 'Paramètres'
 },
 
 ];

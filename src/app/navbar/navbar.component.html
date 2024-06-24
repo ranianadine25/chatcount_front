@@ -10,7 +10,13 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
       <ul class="navbar-nav ">        
         <app-navbar-notif></app-navbar-notif>
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:void(0)" (click)="toggleHelp()">
+            <i class="fas fa-question-circle"></i> Aide
+          </a>
+        </li>
 
+        <app-help-sidebar *ngIf="showHelpSidebar"></app-help-sidebar>
         <li ngbDropdown class="nav-item dropdown-user">
           <a class="nav-link dropdown-toggle dropdown-user-link" id="dropdown-user" ngbDropdownToggle id="navbarUserDropdown" aria-haspopup="true" aria-expanded="false">
             <ng-container *ngIf="currentUser">

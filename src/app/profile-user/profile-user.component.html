@@ -13,11 +13,11 @@
                   <div class="form-group">
                     <input type="file" (change)="onAvatarSelected($event)" class="form-control" />
                   </div>
-                  <button type="submit" class="btn btn-primary">Update Photo</button>
+                  <button type="submit" class="btn btn-primary">Modifier Photo</button>
                 </form>
                 <hr class="my-4">
                 <input type="email" class="form-control" #inviteEmail placeholder="Enter email to invite">
-                <button class="btn btn-success mt-2" (click)="generateInvitationLink(inviteEmail.value)">Generate Invitation Link</button>
+                <button class="btn btn-success mt-2" (click)="generateInvitationLink(inviteEmail.value)">Envoyer lien d'invitation</button>
                 <div *ngIf="invitationLink" class="mt-2">
                   <input type="text" class="form-control" [value]="invitationLink" readonly>
                   <button class="btn btn-info mt-2" (click)="copyInvitationLink()">Copy Invitation Link</button>
@@ -41,7 +41,7 @@
             <form *ngIf="currentUser && currentUser.userInfo" #profileForm="ngForm" (ngSubmit)="onUpdateProfile(profileForm)">
               <div class="row mb-3">
                 <div class="col-sm-3">
-                  <h6 class="mb-0">Full Name</h6>
+                  <h6 class="mb-0">Nom et Prénom</h6>
                 </div>
                 <div class="col-sm-9 text-secondary">
                   <input type="text" class="form-control" name="name" [(ngModel)]="currentUser.userInfo.name" required>
@@ -57,7 +57,7 @@
               </div>
               <div class="row mb-3">
                 <div class="col-sm-3">
-                  <h6 class="mb-0">Phone</h6>
+                  <h6 class="mb-0">Téléphone</h6>
                 </div>
                 <div class="col-sm-9 text-secondary">
                   <input type="phone" class="form-control" name="phone" [(ngModel)]="currentUser.userInfo.phone" required>
@@ -65,7 +65,7 @@
               </div>
               <div class="row mb-3">
                 <div class="col-sm-3">
-                  <h6 class="mb-0">Address</h6>
+                  <h6 class="mb-0">Addresse</h6>
                 </div>
                 <div class="col-sm-9 text-secondary">
                   <input type="address" class="form-control" name="address" [(ngModel)]="currentUser.userInfo.address" required>
@@ -96,7 +96,7 @@
               <div class="row">
                 <div class="col-sm-3"></div>
                 <div class="col-sm-9 text-secondary">
-                  <button type="submit"  class="btn btn-primary px-4">Save Changes</button>
+                  <button type="submit"  class="btn btn-primary px-4">Sauvegarder</button>
                 </div>
               </div>
             </form>

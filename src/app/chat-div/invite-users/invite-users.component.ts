@@ -80,7 +80,7 @@ export class InviteUsersComponent {
       }
       this.conversationService.inviteUsersToConversation(this.conversationId, userIds).subscribe(
         response => {
-          alert("Users invited successfully!")
+          alert("Utilisateur invité avec succès!")
           console.log('Users invited successfully:', response);
         },
         error => {

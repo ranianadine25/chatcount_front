@@ -1,44 +1,38 @@
-<div  class="rania  d-flex justify-content-between ">
-<div class="my-custom " >
-  <div class="close-button" style="cursor: pointer;" (click)="closePopup()">
-    <img src="./assets/circle.svg" alt="Close button">
-  </div>
-  <div>
-
-    <button type="button" class="btn btn-outline-primary" id="import-fec-button" (click)="openFileUploadDialog()">
-      <i class="fa fa-file-import"></i> Importer votre FEC
-    </button>
-  </div>
-  <div class="modal-body">
-    <div class="fec-selection">
-      <h3>Sélectionnez un FEC</h3>
-      <ul>
-        <li *ngFor="let fec of fecs">
-          <div class="d-flex  align-items-center">
-            <label class="fec-name">
+<div class="rania d-flex justify-content-between">
+  <div class="my-custom">
+    <div class="close-button" style="cursor: pointer;" (click)="closePopup()">
+      <img src="./assets/circle.svg" alt="Close button">
+    </div>
+    <div class="modal-body">
+      <div class="fec-selection">
+        <h3>Sélectionnez un FEC</h3>
+        <ul class="list-group">
+          <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let fec of fecs">
+            <label class="fec-name m-0">
               <input type="radio" name="selectedFec" [(ngModel)]="selectedFec" [value]="fec">
               {{ fec.name }}
             </label>
-            <i class="fa fa-trash-alt margin-right" style="cursor: pointer;" (click)="deleteFec(fec._id)"></i>
-          </div>
-        </li>
-      </ul>
+            <i class="fa fa-trash-alt text-danger" style="cursor: pointer;" (click)="deleteFec(fec._id)"></i>
+          </li>
+        </ul>
+      </div>
+      <div class="overlay" [class.active]="isPopupOpen2">
+        <div class="popup text-center">
+          <i class="fa fa-check-circle confirmation-icon"></i>
+          <p class="confirmation-text">Vous avez importé votre fichier avec succès!</p>
+          <button class="btn btn-success confirm-button" (click)="confirmAction2()">Ok</button>
+        </div>
+      </div>
+      <div class="text-center mt-3">
+        <button type="button" class="btn btn-primary" [disabled]="!selectedFec" (click)="launchDiscussion()">Lancer votre discussion</button>
+      </div>
+      <div class="overlay" [class.active]="isPopupOpen">
+        <div class="popup text-center">
+          <i class="fa fa-check-circle confirmation-icon"></i>
+          <p class="confirmation-text">Un fichier avec le même nom existe déjà! Voulez-vous le remplacer par le fichier suivant ?</p>
+          <button class="btn btn-success confirm-button" (click)="confirmAction()">Confirmer</button>
+        </div>
+      </div>
     </div>
-    <div class="overlay" [class.active]="isPopupOpen2">
-      <div class="popup">
-        <i class="fa fa-check-circle confirmation-icon"></i>
-        <p class="confirmation-text">Vous avez importé votre fichier avec succès!</p>
-        <button class="btn btn-success confirm-button" (click)="confirmAction2()">Ok</button>  </div>
-    </div>
-    <div class="discussion-button">
-      <button type="button" class="btn btn-primary" [disabled]="!selectedFec" (click)="launchDiscussion()">Lancer votre discussion</button>
-    </div>
-    <div class="overlay" [class.active]="isPopupOpen">
-      <div class="popup">
-        <i class="fa fa-check-circle confirmation-icon"></i>
-        <p class="confirmation-text">Un fichier avec le même nom existe déjà!. Voulez-vous le remplacer par le fichier suivant ?</p>
-        <button class="btn btn-success confirm-button" (click)="confirmAction()">Confirmer</button>  </div>
-    </div>
-  </div>
   </div>
 </div>

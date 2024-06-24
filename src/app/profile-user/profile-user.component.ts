@@ -55,11 +55,11 @@ export class ProfileUserComponent {
   this.authService.generateInvitationLink(email, this.currentUser?.userInfo._id!).subscribe(
     (response: any) => {
       this.invitationLink = response.invitationLink;
-      alert('Invitation sent successfully!');
+      alert('Invitation envoyée avec succès!');
     },
     (error) => {
       console.error('Error sending invitation:', error);
-      alert('Failed to send invitation.');
+      alert('Erreur lors de l"envoi d"invitation.');
     }
   );
 }

@@ -1,0 +1,315 @@
+<div class="article-container" *ngIf="section">
+    <div *ngIf="section === 'introduction'">
+      <h2>Bienvenue sur ChatCount</h2>
+      <p>Bienvenue sur ChatCount, votre assistant d'affaires intelligent. Ce guide vous aidera à vous familiariser avec les fonctionnalités de ChatCount et à comprendre comment l'utiliser pour obtenir des informations précises et des insights pertinents.</p>
+      <h3>Sections principales de l'application ChatCount:</h3>
+      <h4>1. Section Chat:</h4>
+      <ul>
+        <li>Interface de chat permettant de sélectionner un dossier et d'interagir avec le bot.</li>
+        <li>Poser des questions en langage naturel pour obtenir des informations et des insights.</li>
+        <li>Interagir avec le bot pour effectuer des actions spécifiques, comme la recherche de documents ou la création de rapports.</li>
+      </ul>
+      <h4>2. Section Documents:</h4>
+      <ul>
+        <li>Gérer les dossiers et les fichiers FEC.</li>
+        <li>Importer des fichiers FEC ou se connecter à un logiciel comptable.</li>
+        <li>Lancer le traitement des FEC et consulter les résultats.</li>
+      </ul>
+      <h4>3. Section Paramètres:</h4>
+      <ul>
+        <li>Paramétrer les mappings et les patterns pour améliorer la précision des réponses du bot.</li>
+        <li>Définir des synonymes et des mots-clés pour une meilleure compréhension du langage naturel.</li>
+        <li>Gérer les utilisateurs et leurs permissions.</li>
+        <li>Configurer les paramètres système selon les besoins de votre organisation.</li>
+        <li>Mettre en place des mesures de sécurité pour protéger vos données.</li>
+      </ul>
+      <h3>Contenu</h3>
+      <p>L'onglet Contenu est la base de connaissances de ChatCount. C'est ici que vous ajoutez les documents que ChatCount peut utiliser pour répondre à vos questions.</p>
+      <h4>Ajouter un document:</h4>
+      <ul>
+        <li>Créer un nouveau document en saisissant le texte ou en collant le contenu.</li>
+        <li>Télécharger un document existant (PDF, PowerPoint, ou Word).</li>
+      </ul>
+      <h4>Vérifier le statut du document:</h4>
+      <p>Une coche verte indique que ChatCount a appris les informations avec succès.</p>
+      <h3>Conversations</h3>
+      <p>Les Conversations ChatCount sont l'endroit où vous interagissez avec ChatCount et posez vos questions.</p>
+      <h4>Démarrer une conversation:</h4>
+      <ul>
+        <li>Sélectionnez le répertoire sur lequel vous souhaitez discuter (par exemple, ressources humaines).</li>
+      </ul>
+      <h4>Poser des questions:</h4>
+      <ul>
+        <li>Posez à ChatCount des questions liées au répertoire que vous avez sélectionné.</li>
+        <li>Utilisez un langage naturel pour formuler vos questions.</li>
+      </ul>
+      <h4>Obtenir des réponses:</h4>
+      <ul>
+        <li>ChatCount utilisera ses sources pour répondre à vos questions.</li>
+        <li>Si vous remarquez quelque chose d'incorrect, vous pouvez revenir au document source et le modifier.</li>
+      </ul>
+      <h3>Paramètres</h3>
+      <p>L'onglet Paramètres vous permet de configurer et de personnaliser votre expérience avec ChatCount.</p>
+      <h4>Gestion des Utilisateurs:</h4>
+      <ul>
+        <li>Ajoutez ou supprimez des utilisateurs.</li>
+        <li>Assignez des rôles et gérez les permissions.</li>
+      </ul>
+      <h4>Configuration du Système:</h4>
+      <ul>
+        <li>Ajustez les paramètres de votre système pour qu'ils correspondent aux besoins de votre organisation.</li>
+      </ul>
+      <h4>Sécurité:</h4>
+      <ul>
+        <li>Mettez en place des mesures de sécurité, telles que l'authentification à deux facteurs, pour protéger vos données.</li>
+      </ul>
+      <h3>Objectif de ChatCount</h3>
+      <p>L'objectif de ChatCount est d'être précis et utile. Il vous demandera de contacter le département pertinent s'il ne trouve pas l'information que vous recherchez. ChatCount utilise vos contenus comme contexte pour créer de nouvelles informations et fournir des réponses pertinentes.</p>
+      <p>En utilisant ChatCount, vous pouvez:</p>
+      <ul>
+        <li>Obtenir des informations précises et à jour sur vos documents et données.</li>
+        <li>Gagner du temps en automatisant des tâches manuelles.</li>
+        <li>Améliorer votre prise de décision en accédant à des insights pertinents.</li>
+        <li>Collaborer plus efficacement avec vos collègues.</li>
+      </ul>
+      <p>ChatCount est un outil puissant qui peut vous aider à améliorer vos processus métier et à atteindre vos objectifs.</p>
+
+    </div>
+    <!-- Ajoutez d'autres sections ici -->
+
+    <div *ngIf="section === 'chat'">
+            <div class="initiation-header">
+                <h1>Bienvenue sur ChatCount</h1>
+                <p>Votre assistant d'affaires intelligent</p>
+                <img src='assets/first.png' alt="ChatCount">
+
+              </div>
+            <div class="step">
+
+              <h3>Étape 1 : Cliquer sur "Nouvelle Conversation"</h3>
+              <img src='assets/new.ong.png' alt="Étape 1">
+
+              <p>Après vous être connecté, cliquez sur le bouton "Nouvelle Conversation" situé dans le panneau latéral gauche. Cela ouvrira un pop-up où vous pourrez sélectionner un fichier FEC.</p>
+            </div>
+            <div class="step">
+              <h3>Étape 2 : Sélectionner un FEC et lancer la discussion</h3>
+              <img src='assets/newchat.png' alt="Étape 2">
+
+              <p>Dans le pop-up, sélectionnez un fichier FEC parmi la liste des fichiers disponibles (Ces fichiers sont tous traités!). Cliquez ensuite sur le bouton "Lancer votre discussion" pour commencer une nouvelle conversation.</p>
+            </div>
+            <div class="step">
+                <h3>Étape 3 : Taper une question et utiliser les suggestions</h3>
+                <img src='assets/sugg.png' alt="Étape 3">
+
+                <p>Une fois la discussion lancée, vous pouvez taper votre question dans le champ de texte en bas de l'écran. Des suggestions de questions apparaîtront au fur et à mesure que vous tapez. Vous pouvez sélectionner une suggestion ou terminer de taper votre question et cliquer sur "Envoyer".</p>
+                <p>Voici donc votre discussion :</p>
+                <img src='assets/hello.png' alt="Exemple de question et réponse" class="discussion-example">
+                <p class="note">Note : Le bot peut parfois prendre un peu de temps pour répondre, veuillez patienter.</p>
+              </div>
+            <div class="step">
+              <h3>Étape 4 : Consulter l'historique des discussions</h3>
+              <img src='assets/convs.png' alt="Étape 4">
+
+              <p>Vous pouvez consulter l'historique de vos discussions dans la zone de discussion. Chaque message est affiché avec des détails sur la question posée et la réponse fournie.</p>
+            </div>
+            <div class="step">
+              <h3>Étape 5 : Utiliser la navigation latérale pour accéder aux discussions personnelles et partagées</h3>
+              <img src='assets/shared.png' alt="Étape 5">
+
+              <p>Dans la navigation latérale gauche, vous trouverez des onglets pour accéder à vos discussions personnelles et partagées. Cliquez sur l'onglet "Personnelles" pour voir vos discussions privées et sur "Partagées" pour voir celles que vous avez partagées avec d'autres utilisateurs.</p>
+            </div>
+            <div class="step">
+              <h3>Étape 6 : Gérer les discussions (supprimer, renommer, inviter des membres)</h3>
+              <img src='assets/action.png' alt="Étape 6">
+
+              <p>Pour gérer une discussion, cliquez sur les trois points à côté de la discussion dans la navigation latérale. Vous pouvez supprimer, renommer la discussion ou inviter des membres. Si vous ne trouvez personne dans la liste "Inviter des utilisateurs", cela signifie que vous devez d'abord créer votre équipe depuis votre profil et envoyer des invitations.</p>
+            </div>
+            <div class="step">
+              <h3>Étape 7 : Inviter des utilisateurs à une discussion</h3>
+              <img src='assets/invite.png' alt="Étape 7">
+
+              <p>Pour inviter des utilisateurs à une discussion, accédez à votre profil et ajoutez des membres à votre équipe. Une fois les invitations envoyées et acceptées, vous pourrez les inviter à vos discussions.</p>
+            </div>
+          </div>
+          
+    <div  *ngIf="section === 'documents'">
+        <div class="article-header">
+          <h1>Gestion des Documents dans ChatCount</h1>
+          <p>Bienvenue dans la section Documents de ChatCount. Cette section vous permet de gérer efficacement vos dossiers et fichiers FEC. Voici un guide pour vous aider à comprendre comment créer, importer, gérer et traiter vos fichiers FEC.</p>
+          <img src="assets/con1.png" alt="Nouveau Dossier" class="example-image">
+
+        </div>
+      
+        <div class="article-section">
+          <h2>1. Interface d'initiation</h2>
+          <p>Après vous être connecté à ChatCount, accédez à la section Documents pour gérer vos fichiers FEC. Voici comment commencer :</p>
+          <ul>
+            <li><strong>Créer un nouveau dossier :</strong> Cliquez sur le bouton "Nouveau Dossier" pour créer un nouveau dossier. Un pop-up s'affichera où vous pourrez nommer le dossier. Saisissez un nom et confirmez.</li>
+          </ul>
+          <img src="assets/con2.png" alt="Nouveau Dossier" class="example-image">
+        </div>
+      
+        <div class="article-section">
+          <h2>2. Gérer vos dossiers</h2>
+          <p>Une fois que vous avez créé un dossier, vous pouvez y accéder ou le supprimer. Pour cela, suivez ces étapes :</p>
+          <img src="assets/con3.png" alt="Nouveau Dossier" class="example-image">
+
+          <ul>
+            <li><strong>Accéder à un dossier :</strong> Cliquez sur le nom du dossier pour ouvrir l'interface de gestion des fichiers FEC associés.</li>
+            <li><strong>Supprimer un dossier :</strong> Cliquez sur l'icône de suppression à côté du nom du dossier et confirmez la suppression.</li>
+          </ul>
+        </div>
+      
+        <div class="article-section">
+            <h2>3. Importer un fichier FEC</h2>
+            <p>Pour importer un fichier FEC dans un dossier, suivez ces étapes :</p>
+            <ul>
+              <li><strong>Importer un FEC :</strong> Dans l'interface de gestion des FEC, cliquez sur le bouton "Importer FEC". Sélectionnez un fichier FEC depuis votre ordinateur et cliquez sur "Ouvrir". Le fichier FEC apparaîtra dans la liste des FECs.</li>
+            </ul>
+            <p class="note">Note : Le nom du fichier à importer ne doit pas contenir d'espaces.</p>
+            <img src="assets/con4.png" alt="Importer un FEC" class="example-image">
+            <img src="assets/con5.png" alt="Importer un FEC" class="example-image">
+          </div>
+          
+      
+        <div class="article-section">
+          <h2>4. Consulter et filtrer la liste des FECs</h2>
+          <p>Vous pouvez consulter la liste des FECs et les filtrer par état (traité, en cours, etc.) :</p>
+          <ul>
+            <li><strong>Consulter la liste des FECs :</strong> Tous les fichiers FEC importés seront affichés dans une liste. Chaque fichier inclura des informations telles que le nom, la date d'importation et l'état du traitement.</li>
+            <li><strong>Filtrer par état :</strong> Utilisez le menu déroulant ou les filtres pour afficher uniquement les fichiers FEC dans un état spécifique (par exemple, traité ou en cours).</li>
+          </ul>
+          <img src="assets/con6.png" alt="Actions sur les FECs" class="example-image">
+
+        </div>
+      
+        <div class="article-section">
+          <h2>5. Actions sur les FECs</h2>
+          <p>Pour chaque fichier FEC, vous pouvez effectuer plusieurs actions spécifiques en utilisant le menu des actions :</p>
+          <ul>
+            <li><strong>Supprimer un FEC :</strong> Cliquez sur l'icône de suppression à côté du fichier FEC et confirmez la suppression.</li>
+            <li><strong>Lancer le traitement d'un FEC :</strong> Cliquez sur l'icône de traitement pour lancer le processus de traitement du fichier FEC.</li>
+            <li><strong>Exporter un FEC :</strong> Cliquez sur l'icône d'exportation pour télécharger le fichier FEC traité sur votre ordinateur.</li>
+          </ul>
+          <img src="assets/con7.png" alt="Actions sur les FECs" class="example-image">
+        </div>
+      
+        <div class="article-conclusion">
+          <h2>Conclusion</h2>
+          <p>La section Documents de ChatCount est conçue pour vous aider à gérer vos fichiers FEC de manière efficace. En suivant ces étapes, vous pouvez facilement créer, importer, gérer et traiter vos fichiers FEC. Si vous avez des questions ou besoin d'aide supplémentaire, n'hésitez pas à consulter notre section d'aide ou à contacter notre support technique.</p>
+        </div>
+      </div>
+      
+      <div *ngIf="section === 'settings'">
+        <div class="article-header">
+          <h1>Paramétrages dans ChatCount</h1>
+          <p>Bienvenue dans la section Paramétrages de ChatCount. Cette section vous permet de configurer divers aspects de votre application pour optimiser son fonctionnement. Voici un guide détaillé pour vous aider à comprendre les différents paramètres disponibles.</p>
+          <img src="assets/par1.png" alt="Actions sur les FECs" class="example-image">
+
+        </div>
+      
+        <div class="article-section">
+          <h2>1. Paramétrage du traitement du FEC</h2>
+          <p>Dans cette section, vous pouvez configurer le traitement des fichiers FEC. Voici les étapes pour le faire :</p>
+          <img src="assets/par2.png" alt="Actions sur les FECs" class="example-image">
+          <img src="assets/par3.png" alt="Actions sur les FECs" class="example-image">
+
+          <ul>
+            <li><strong>Sélectionner une racine :</strong> Cliquez sur l'une des cinq racines disponibles pour la sélectionner.</li>
+            <li><strong>Modifier le mapping :</strong> Après avoir sélectionné une racine, vous pouvez modifier le mapping des champs.</li>
+            <li><strong>Supprimer un libellé :</strong> Cliquez sur l'icône de suppression à côté du libellé que vous souhaitez supprimer.</li>
+            <li><strong>Ajouter un autre libellé :</strong> Cliquez sur le bouton "Ajouter un libellé" pour en ajouter un nouveau.</li>
+          </ul>
+          <p>À chaque action (modification, suppression, ajout), vous recevrez une alerte et la page sera actualisée automatiquement.</p>
+        </div>
+      
+        <div class="article-section">
+          <h2>2. Paramétrage des mots clés</h2>
+          <img src="assets/con4.png" alt="Actions sur les FECs" class="example-image">
+
+          <p>Dans cette section, vous pouvez gérer les mots clés utilisés par ChatCount. Voici les étapes :</p>
+          <ul>
+            <li><strong>Exporter les mots clés :</strong> Cliquez sur le bouton "Exporter CSV" pour exporter la liste des mots clés. Utilisez Open Office avec le séparateur ";" et l'encodage UTF-8 pour ouvrir le fichier.</li>
+            <li><strong>Importer les mots clés :</strong> Après avoir fait les modifications nécessaires, cliquez sur le bouton "Importer votre fichier.csv" pour importer le fichier. <strong>NOTE :</strong> Le fichier doit être nommé <em>MotsCles.csv</em>.</li>
+          </ul>
+        </div>
+      
+        <div class="article-section">
+          <h2>3. Paramétrage des patterns</h2>
+          <img src="assets/par5.png" alt="Actions sur les FECs" class="example-image">
+
+          <p>Dans cette section, vous pouvez gérer les patterns utilisés par ChatCount. Voici les étapes :</p>
+          <ul>
+            <li><strong>Exporter les patterns :</strong> Cliquez sur le bouton "Exporter CSV" pour exporter la liste des patterns. Utilisez Open Office avec le séparateur ";" et l'encodage UTF-8 pour ouvrir le fichier.</li>
+            <li><strong>Importer les patterns :</strong> Après avoir fait les modifications nécessaires, cliquez sur le bouton "Importer votre fichier.csv" pour importer le fichier. <strong>NOTE :</strong> Le fichier doit être nommé <em>questions.csv</em>.</li>
+          </ul>
+        </div>
+      
+        <div class="article-section">
+          <h2>4. Paramétrage des synonymes</h2>
+          <img src="assets/par6.png" alt="Actions sur les FECs" class="example-image">
+
+          <p>Dans cette section, vous pouvez gérer les synonymes utilisés par ChatCount. Voici les étapes :</p>
+          <ul>
+            <li><strong>Exporter les synonymes :</strong> Cliquez sur le bouton "Exporter CSV" pour exporter la liste des synonymes. Utilisez Open Office avec le séparateur ";" et l'encodage UTF-8 pour ouvrir le fichier.</li>
+            <li><strong>Importer les synonymes :</strong> Après avoir fait les modifications nécessaires, cliquez sur le bouton "Importer votre fichier.csv" pour importer le fichier. <strong>NOTE :</strong> Le fichier doit être nommé <em>Synonymes.csv</em>.</li>
+          </ul>
+        </div>
+      
+        <div class="article-conclusion">
+          <h2>Conclusion</h2>
+          <p>La section Paramétrages de ChatCount vous offre une flexibilité et un contrôle complets sur les différentes configurations de votre application. En suivant ces étapes, vous pouvez optimiser et personnaliser ChatCount selon vos besoins. Si vous avez des questions ou besoin d'aide supplémentaire, n'hésitez pas à consulter notre section d'aide ou à contacter notre support technique.</p>
+        </div>
+      </div>
+      <div *ngIf="section === 'profil'">
+        <div class="article-header">
+          <h1>Gestion du Profil Utilisateur dans ChatCount</h1>
+          <p>Bienvenue dans la section Profil de ChatCount. Cette section vous permet de gérer vos informations personnelles, de modifier votre photo de profil, et d'inviter d'autres utilisateurs à rejoindre ChatCount. Voici un guide pour vous aider à comprendre comment utiliser ces fonctionnalités.</p>
+        </div>
+      
+        <div class="article-section">
+          <h2>1. Accéder à son profil</h2>
+          <p>Pour accéder à votre profil, cliquez sur votre photo dans la barre de navigation en haut de l'écran. L'interface de votre profil s'affichera.</p>
+          <img src="assets/pro1.png" alt="Accéder au profil" class="example-image">
+        </div>
+      
+        <div class="article-section">
+          <h2>2. Modifier ses données personnelles</h2>
+          <p>Dans l'interface de votre profil, vous trouverez vos informations personnelles. Vous pouvez les modifier en suivant ces étapes :</p>
+          <ul>
+            <li><strong>Modifier les informations :</strong> Cliquez sur les champs que vous souhaitez modifier et entrez les nouvelles informations.</li>
+            <li><strong>Sauvegarder les modifications :</strong> Cliquez sur le bouton "Sauvegarder" pour enregistrer les modifications.</li>
+          </ul>
+          <img src="assets/pro3.png" alt="Modifier le profil" class="example-image">
+        </div>
+      
+        <div class="article-section">
+          <h2>3. Modifier sa photo de profil</h2>
+          <p>Pour modifier votre photo de profil, suivez ces étapes :</p>
+          <ul>
+            <li><strong>Changer la photo de profil :</strong> Cliquez sur votre photo actuelle pour ouvrir le sélecteur de fichier.</li>
+            <li><strong>Sélectionner une nouvelle photo :</strong> Choisissez une nouvelle photo depuis votre ordinateur et cliquez sur "Ouvrir".</li>
+            <li><strong>Sauvegarder les modifications :</strong> Cliquez sur le bouton "Sauvegarder" pour enregistrer la nouvelle photo de profil.</li>
+          </ul>
+        </div>
+      
+        <div class="article-section">
+          <h2>4. Inviter des utilisateurs</h2>
+          <p>Pour inviter d'autres utilisateurs à rejoindre ChatCount, suivez ces étapes :</p>
+          <ul>
+            <li><strong>Entrer l'email :</strong> Tapez l'adresse email de l'utilisateur que vous souhaitez inviter dans le champ prévu à cet effet.</li>
+            <li><strong>Envoyer le lien d'invitation :</strong> Cliquez sur le bouton "Envoyer lien d'invitation" pour envoyer l'invitation.</li>
+          </ul>
+          <p>Les personnes invitées et qui ont un compte sur ChatCount seront affichées sous la liste "Invités".</p>
+        </div>
+      
+        <div class="article-conclusion">
+          <h2>Conclusion</h2>
+          <p>La gestion de votre profil dans ChatCount vous permet de personnaliser vos informations personnelles, de mettre à jour votre photo de profil, et d'inviter d'autres utilisateurs à rejoindre votre équipe. En suivant ces étapes, vous pouvez facilement gérer votre profil et collaborer avec d'autres utilisateurs. Si vous avez des questions ou besoin d'aide supplémentaire, n'hésitez pas à consulter notre section d'aide ou à contacter notre support technique.</p>
+        </div>
+      </div>
+      
+          <button class="back-button" (click)="returnAll()">Retour</button>
+
+  </div>
+  

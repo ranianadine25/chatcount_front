@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://backend.chatcount.ai'
+  apiUrl: 'http://localhost:7001'
 };

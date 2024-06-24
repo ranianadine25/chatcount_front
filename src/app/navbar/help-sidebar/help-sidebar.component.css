@@ -1,0 +1,198 @@
+/* Styles généraux pour la barre latérale */
+.sidebar {
+  width: 450px; /* Augmenter la largeur pour plus d'espace */
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: #ffffff;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  border-radius: 15px 0 0 15px;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+}
+
+.help-header {
+  background-color: #030640;
+  color: white;
+  padding: 25px; /* Augmenter le padding pour plus d'espace */
+  text-align: center;
+}
+
+.help-header h2 {
+  margin: 0;
+  font-size: 28px; /* Augmenter la taille de la police */
+}
+
+.help-header h3 {
+  margin: 10px 0 20px;
+  font-size: 22px; /* Augmenter la taille de la police */
+}
+
+.help-header span {
+  font-size: 28px; /* Augmenter la taille de l'emoji */
+}
+
+.help-header .message-button {
+  background-color: white;
+  color: #0066ff;
+  padding: 15px; /* Augmenter le padding pour plus d'espace */
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.help-header .message-button small {
+  display: block;
+  color: #666;
+}
+
+.help-header input {
+  width: calc(100% - 50px); /* Augmenter la largeur de l'input */
+  padding: 12px; /* Augmenter le padding */
+  border: none;
+  border-radius: 5px;
+}
+
+.help-collections {
+  padding: 20px; /* Augmenter le padding pour plus d'espace */
+}
+
+.help-collections h5 {
+  margin-top: 0;
+  font-size: 20px; /* Augmenter la taille de la police */
+}
+
+.list-group {
+  margin-top: 10px;
+}
+
+.list-group-item {
+  display: block;
+  padding: 15px 20px;
+  margin-bottom: 10px;
+  background-color: #f8f9fa;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #333;
+  transition: background-color 0.3s ease;
+}
+
+.list-group-item:hover {
+  background-color: #e2e6ea;
+}
+
+.help-content {
+  padding: 20px; /* Augmenter le padding pour plus d'espace */
+  overflow-y: auto;
+  height: calc(100vh - 230px); /* Ajuster la hauteur pour tenir compte du padding */
+}
+
+.help-content h2, .help-content h3, .help-content h4 {
+  font-size: 22px; /* Augmenter la taille de la police */
+  margin-bottom: 15px; /* Augmenter l'espacement */
+}
+
+.help-content h2 {
+  font-size: 26px; /* Augmenter la taille de la police */
+}
+
+.help-content .author-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px; /* Augmenter l'espacement */
+}
+
+.help-content .author-info img {
+  border-radius: 50%;
+  width: 50px; /* Augmenter la taille de l'image */
+  height: 50px; /* Augmenter la taille de l'image */
+  margin-right: 15px; /* Augmenter l'espacement */
+}
+
+.help-content .author-info div {
+  color: #666;
+  font-size: 16px; /* Augmenter la taille de la police */
+}
+
+.help-content p {
+  margin-bottom: 15px; /* Augmenter l'espacement */
+  line-height: 1.6; /* Augmenter l'interligne */
+  font-size: 18px; /* Augmenter la taille de la police */
+}
+
+.help-content ul {
+  padding-left: 20px; /* Ajouter du padding aux listes */
+  font-size: 18px; /* Augmenter la taille de la police */
+}
+
+.help-content a {
+  color: #0066ff;
+  text-decoration: none;
+}
+
+.help-content a:hover {
+  text-decoration: underline;
+}
+
+.back-button {
+  display: block;
+  margin-bottom: 15px;
+  padding: 12px; /* Augmenter le padding */
+  background-color: #f1f1f1;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px; /* Augmenter la taille de la police */
+}
+
+.see-all-button {
+  display: block;
+  margin-bottom: 80px;
+  margin-top: 20px;
+  padding: 12px;
+  background-color: #96b4e2;
+  text-align: center;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 18px; /* Augmenter la taille de la police */
+}
+
+.see-all-button:hover {
+  background-color: #b9c8de;
+}
+
+.footer {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+  color: #aaa;
+  font-size: 14px; /* Augmenter la taille de la police */
+}
+
+.footer .nav-item {
+  display: flex;
+  justify-content: space-around;
+  padding: 15px 0; /* Augmenter le padding */
+  background-color: #f1f1f1;
+  border-top: 1px solid #ddd;
+}
+
+.footer .nav-link {
+  text-decoration: none;
+  color: #0066ff;
+  font-weight: bold;
+  font-size: 16px; /* Augmenter la taille de la police */
+}
+
+.footer .nav-link i {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.footer .powered-by {
+  margin-top: 10px;
+}

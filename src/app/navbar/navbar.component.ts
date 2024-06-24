@@ -19,6 +19,8 @@ import { environment } from '../environment/environment.prod';
   public showNotifCenter: boolean = false;
   public notifications = [];
   notifsCount: number = 0;
+  showHelpSidebar: boolean = false;
+
 
   subscription = new Subscription();
   constructor( private router: Router,private authService: AuthService,@Inject(PLATFORM_ID) private platformId: Object, private notificationsService: NotificationsService) {
@@ -57,5 +59,9 @@ import { environment } from '../environment/environment.prod';
     this.router.navigate(['/pages/profile', this.currentUser?.userInfo._id]).then(() => {
       location.reload();
     });
+}
+toggleHelp() {
+  this.showHelpSidebar = !this.showHelpSidebar;
+  console.log("this.showHelpSidebar",this.showHelpSidebar);
 }
 }

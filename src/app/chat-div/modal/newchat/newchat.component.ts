@@ -106,74 +106,7 @@ closemodal(){
   modal!.style.display = "none";
 }
 
-  handleFileUpload(file: File) {
-    this.fecService.uploadFile(file,this.currentUser?.userInfo._id!).subscribe(
-      (response: any) => {
-        
-        console.log("Response:", response);
-  if(response.status === 200){
-    //this.isPopupOpen2 = true;
-    this.fecs = this.fecs.filter(fec => fec._id !== response._id);
-
-this.getFecs();
-console.log("upload fec avec succes");
-  }
-        if (response && response.message && response.fecId) {
-          if (response.message === "Un fichier avec le même nom existe déjà.") {
-            console.log("Fichier déjà existant:", response.message);
-            this.replaceFile(response.fecId,file);
-            this.isPopupOpen = true;
-
-          } else {
-            this.alertServ.alertHandler(
-              response.message,
-              "success"
-            );
-            this.toastr.success(response.message, 'Succès',
-              {
-                positionClass: 'toast-bottom-right',
-                toastClass: 'toast ngx-toastr',
-                closeButton: true
-              });
-          }
-        } else {
-          console.warn("Réponse invalide:", response);
-        }
-      },
-      (error: HttpErrorResponse) => {
-        console.error("File upload error:", error); // Log l'erreur
   
-        if (error.status === 409) {
-          console.log("Fichier déjà existant:", error.error.message);
-          this.replaceFile( error.error.fecId,file);
-          this.isPopupOpen = true;
-
-        } else 
-        if (error.status === 300) {
-          this.isPopupOpen2 = true;
-          this.getFecs();
-          this.fecs = this.fecs.filter(fec => fec._id !== error.error.fecId);
-
-
-        }
-        else {
-          if (error.error && error.error.message) {
-            this.alertServ.alertHandler(
-              error.error.message,
-              "error"
-            );
-          } else {
-            this.alertServ.alertHandler(
-              "Une erreur inconnue s'est produite lors du chargement du fichier.",
-              "error"
-            );
-          }
-        }
-      }
-    );
-    console.log("rrrrrrrrrrrrrrrrrrrrrrrrrrrr",this.currentUser?.userInfo._id);
-
-  }
   
   confirmAction(){
     this.isPopupOpen = false;
@@ -184,56 +117,7 @@ console.log("upload fec avec succes");
   }
 
   
-  replaceFile(existingFecId: string, file: File) {
-    this.fecService.replaceFile(existingFecId, file).subscribe(
-      response => {
-        this.alertServ.alertHandler(
-          response.message!,
-          "success"
-        );
-        this.toastr.success(response.message, 'Succès',
-          {
-            positionClass: 'toast-bottom-right',
-            toastClass: 'toast ngx-toastr',
-            closeButton: true
-          });
-      },
-      error => {
-        console.error("Erreur lors du remplacement du fichier :", error);
-        this.alertServ.alertHandler(
-          "Une erreur est survenue lors du remplacement du fichier",
-          "error"
-        );
-      }
-    );
-  }
   
-
-  openFileUploadDialog() {
-    const fileUploadDialog = document.createElement("input");
-    fileUploadDialog.type = "file";
-    fileUploadDialog.accept = ".csv";
-    fileUploadDialog.addEventListener("change", event => {
-      if (event.target) {
-        const fileInput = event.target as HTMLInputElement;
-        if (fileInput.files && fileInput.files.length > 0) {
-          const file = fileInput.files[0];
-          this.handleFileUpload(file);
-        } else {
-          console.warn("No file selected.");
-        }
-      }
-    });
-    fileUploadDialog.click();
-  }
-  navigateToChat(id: string) {
-    const navigationExtras: NavigationExtras = {
-        replaceUrl: true
-    };
-
-    this.router.navigate(['/chat', id], navigationExtras);
-}
-
 
   launchDiscussion() {
     if (this.selectedFec && this.currentUser) {

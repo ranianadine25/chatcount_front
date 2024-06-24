@@ -33,6 +33,7 @@ const appRoutes: Routes = [
     path: 'invitation',
     loadChildren: () => import('./verify-invitation/verif-invitaion.module').then(m => m.VerifInvitationModule),
   },
+
   {
     path: '**',
     redirectTo: 'auth/login', // Redirige les routes non définies vers la page de connexion ou une page 404

@@ -36,3 +36,20 @@
 .invite-users button:hover {
     background-color: #0056b3;
 }
+.invite-users .avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+  
+  .invite-users label {
+    display: flex;
+    align-items: center;
+  }
+  
+  .invite-users span {
+    margin-left: 10px;
+  }
+  
